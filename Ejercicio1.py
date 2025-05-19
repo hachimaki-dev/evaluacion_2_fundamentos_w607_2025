@@ -28,6 +28,7 @@ print(f"Su descuento de arancel es: {int(descuento_total)}")
 print(f"Su descuento total de la matrícula es: {int(descuento_total_M)}")
 
 
+
     
     
     
