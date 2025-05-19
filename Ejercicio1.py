@@ -32,8 +32,15 @@
 arancel = 1800000
 matricula = 90000
 
+print("--------------------------------------------------------------")
+print("----- Bienvenido al sistema de beneficios --------------------")
+print("----- Ingrese su promedio final y quintil socioeconómico -----")
+print("--------------------------------------------------------------")
+print(" ")
 promedio = float(input("----- Ingrese su promedio final :D -----: "))
+print(" ")
 quintil = int(input("----- Ingrese su quintil socioeconómico (1 al 5) -----: "))
+print(" ")
 
 descuento_arancel = 0
 descuento_matricula = 0
@@ -60,5 +67,7 @@ arancel_final = arancel - (arancel * descuento_arancel)
 matricula_final = matricula - (matricula * descuento_matricula)
 
 print("Resumen de descuentos:")
-print(f"- Arancel con descuento: ----- [ ${int(arancel_final)} ] -----")
-print(f"- Matrícula con descuento: ----- [ ${int(matricula_final)} ] -----")
+print("-----------------------------------------------------")
+print(f"--- Arancel con descuento:   ----- [ ${int(arancel_final)} ] -----")
+print(f"--- Matrícula con descuento: ----- [ ${int(matricula_final)}   ] -----")
+print("-----------------------------------------------------")

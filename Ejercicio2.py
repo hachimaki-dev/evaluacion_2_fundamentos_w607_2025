@@ -19,33 +19,47 @@
 
 #2. Usar la función `randint()` para **generar un número aleatorio** dentro del rango indicado.
 
-#ahora quiero que definas una variable como bandera = False, entonces una vez se acaben los intentos, no repitas antes de el, 
-# el mensaje de "El número es mayor, estas muy abajo, compañero, !no te rindas¡." o "El número es menor, !Bajas más¡"
-
 
 from random import randint
 bandera = False
-
-print("Bienvenido al juego de adivinanza¡")
-print("Ingrese el límite inferior y superior del rango numérico.")
-
+print(" ")
+print("---------------------------------------------------------------------")
+print("---------------- Bienvenido al juego de adivinanza¡ -----------------")
+print("----- Ingrese el límite inferior y superior del rango numérico. -----")
+print("---------------------------------------------------------------------")
+print(" ")
 print("Recuerda que el primer número debe ser menor que el segundo.")
+print(" ")
+print("---------------------------------------------------------------------")
 Lim_inferior = int(input("Ingrese el primer Numero (Lim_Inferior): "))
+print("---------------------------------------------------------------------")
 Lim_superior = int(input("Ingrese el segundo Numero (Lim_Superior): "))
+print("---------------------------------------------------------------------")
+print(" ")
 
 if Lim_inferior >= Lim_superior:
-    print("El límite inferior debe ser menor que el límite superior.")
+    print(" ")
+    print("--- [ El límite inferior debe ser menor que el límite superior. ] ---")
+    print(" ")
+    print(" ")
+    print("---------------------------------------------------------------------")
 else:
     Num_aleatorio_LOL = randint(Lim_inferior, Lim_superior)
     print(f"Un número aleatorio ha sido generado entre los numeros {Lim_inferior} y {Lim_superior}.")
+    print(" ")
+    print("---------------------------------------------------------------------")
 
     Num_intentos = 3
     while Num_intentos > 0:
         Intento_usuario = int(input(f"Tienes {Num_intentos} intentos restantes. Ahora adivina el número: "))
+        print("---------------------------------------------------------------------")
+        
         
         if Intento_usuario == Num_aleatorio_LOL:
+            print("---------------------------------------------------------------------")
             print("¡Felicidades! Has adivinado el número¡¡ !Bien hecho¡.")
             print("¡Gracias por jugar!")
+            print("---------------------------------------------------------------------")
             bandera = True
             break
         elif Intento_usuario < Num_aleatorio_LOL:
@@ -58,7 +72,11 @@ else:
         Num_intentos -= 1
 
     if not bandera:
-        print(f"Lo lamento, has agotado tus intentos. El número era {Num_aleatorio_LOL}, Intentalo de nuevo¡ :D.")
+        print("---------------------------------------------------------------------")
+        print(f"! Lo lamento, has agotado tus intentos. El número era {Num_aleatorio_LOL} ¡")
+        print("!Intentalo de nuevo¡ :D. ")
+        print(" ")
         print("¡Gracias por jugar!")
+        print("---------------------------------------------------------------------")
 
-        
+    
