@@ -3,61 +3,27 @@ quintil = int(input("Ingrese en que quintil esta (1, 2, 3, 4, 5): \n"))
 arancel = 1800000
 matricula = 90000
 
-if promedio >= 6 and quintil == 1 or 2:
-    arancel = arancel - arancel * 0.20
-    print(f"El valor del arancel es: {arancel}$")
+descuento_arancel = 0
 
-    if quintil == 1 or 2 or 3:
-        matricula = matricula - matricula * 0.10
-        print(f"El valor de la matricula es: {matricula} ")
-    elif quintil == 1 or 2 or 3 and promedio > 5.5:
-        matricula = matricula - matricula * 0.15
-        print(f"El valor de la matricula es {matricula}")
-    else:
-        print(f"El valor de la matricula es {matricula}")
+descuento_matricula = 0
 
-if promedio >= 6 and quintil == 3 or 4:
-    arancel = arancel - arancel * 0.15
-    print(f"El valor del arancel es: {arancel}$")
+if promedio > 6 and quintil in [1, 2]:
+    descuento_arancel = 0.20
+elif promedio > 6 and quintil in [3, 4]:
+    descuento_arancel = 0.15
+elif 5. > promedio >= 6 and quintil in [1, 2]:
+    descuento_arancel = 0.13
+elif 5. > promedio <= 6 and quintil in [3, 4]:
+    descuento_arancel = 0.10
 
-    if quintil == 1 or 2 or 3:
-        matricula = matricula - matricula * 0.10
-        print(f"El valor de la matricula es: {matricula} ")
-    elif quintil == 1 or 2 or 3 and promedio > 5.5:
-        matricula = matricula - matricula * 0.15
-        print(f"El valor de la matricula es {matricula}")
-    else:
-        print(f"El valor de la matricula es {matricula}")
+arancel -= arancel * descuento_arancel
 
-if promedio > 5 and promedio >= 6 and quintil == 1 or 2:
-    arancel = arancel - arancel * 0.13
-    print(f"El valor del arancel es: {arancel}$")
+if quintil in [1, 2, 3]:
+    descuento_matricula = 0.10
+    if promedio >= 5.5:
+        descuento_matricula += 0.05
 
-    if quintil == 1 or 2 or 3:
-        matricula = matricula - matricula * 0.10
-        print(f"El valor de la matricula es: {matricula} ")
-    elif quintil == 1 or 2 or 3 and promedio > 5.5:
-        matricula = matricula - matricula * 0.15
-        print(f"El valor de la matricula es {matricula}")
-    else:
-        print(f"El valor de la matricula es {matricula}")
+matricula -= matricula * descuento_matricula
 
-if promedio > 5 and promedio >= 6 and quintil == 3 or 4:
-    arancel = arancel - arancel * 0.10
-    print(f"El valor del arancel es: {arancel}$")
-
-    if quintil == 1 or 2 or 3:
-        matricula = matricula - matricula * 0.10
-        print(f"El valor de la matricula es: {matricula} ")
-    elif quintil == 1 or 2 or 3 and promedio > 5.5:
-        matricula = matricula - matricula * 0.15
-        print(f"El valor de la matricula es {matricula}")
-    else:
-        print(f"El valor de la matricula es {matricula}")
-
-if promedio < 5 and quintil == 5:
-    print(f"El valor de la matricula es {matricula}")
-    print(f"El valor del arancel es {arancel}")
-else:
-    print(f"El valor de la matricula es {matricula}")
-    print(f"El valor del arancel es {arancel}")
+print(f"El valor total del arancel es {arancel}")
+print(f"El valor total de la matricula es {matricula}")
