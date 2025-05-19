@@ -11,24 +11,52 @@ if lim_inf > lim_sup:
 
 # Número aleatorio
 numero = randint(lim_inf, lim_sup)
-print("Se ha generado un número... ¡Adivínalo!")
+print(f"Se ha generado un número entre {lim_inf} y {lim_sup}... ¡Adivínalo!")
+print(numero)
 
-vidas = 3
+adivinado = False
 
-intento = int(input("¿Cuál es el número? ")) 
+# Primer intento
+intento1 = int(input("1.- Ingresa tu intento: ")) 
 
-if intento != numero:
-    print("Te equivocaste.")
-    vidas = vidas - 1
-
-if intento != numero and vidas != 0:
-    if intento > numero:
+if intento1 == numero:
+    adivinado = True
+else:
+    print("No acertaste.")
+    if intento1 > numero:
         print("El número que buscas es menor.")
-    elif intento < numero:
+    elif intento1 < numero:
         print("El número que buscas es mayor.")
 
-    if vidas == 1:
-        dif1 = 0
-        dif = inf
-    
-    intento = int(input("¿Cuál es el número? ")) 
+# Segundo intento
+if not adivinado:
+    intento2 = int(input("2.- Ingresa tu intento: ")) 
+
+    if intento2 == numero:
+        adivinado = True
+    else:
+        print("No acertaste.")
+        if intento2 > numero:
+            print("El número que buscas es menor.")
+        elif intento2 < numero:
+            print("El número que buscas es mayor.")  
+        # Calcula diferencias
+        dif1 = abs(numero - intento1)
+        dif2 = abs(numero - intento2)
+        if dif1 < dif2:
+            print(f"Pista: El primer número ingresado >>{intento1}<< estaba más cerca.")
+        elif dif1 > dif2:
+            print(f"Pista: El segundo número ingresado >>{intento2}<< estaba más cerca.")
+
+# Tercer intento
+if not adivinado:
+    intento3 = int(input("3.- Ingresa tu intento final: "))
+
+    if intento3 == numero:
+        adivinado = True
+    else:
+        print(f"Perdiste, el número era: {numero}")
+        print("Fin del juego.")
+
+if adivinado:
+    print("¡Felicidades! Adivinaste.")
