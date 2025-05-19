@@ -5,7 +5,7 @@ matricula_base=90000.0
 
 print("### Calcule el valor del arancel y de la matricula ###")
 
-## Entrada de datos ##
+## Entrada de datos y filtro ##
 promedio=0.0
 quintil=0
 
@@ -32,7 +32,10 @@ if quintil <= 3:
     matricula_final= matricula_base-(matricula_base*0.1)
     if promedio>=5.5:
         matricula_final-=(matricula_base*0.05)
+else:
+    matricula_final = matricula_base
 
+## Salida de Datos ##
 
 print(f"Valor final de la matricula es: {matricula_final}")
 print(f"Valor final del arancel es: {arancel_final}")
