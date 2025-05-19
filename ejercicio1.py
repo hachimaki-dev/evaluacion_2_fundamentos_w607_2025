@@ -84,4 +84,4 @@ elif (prom <= 5.0 and prom >= 4.0) and (quintil == 5):
         print(f"El valor final de su matrícula es de ${matrbase}, y el de su arancel es de ${arancelbase}. No aplica descuento para el arancel ni para la matrícula.")
 
 else:
-    print("Error del programa: Datos no válidos o no hay descuentos realmente aplicables.")
+    print("Error del programa: Datos no válidos o no hay descuentos aplicables.")
