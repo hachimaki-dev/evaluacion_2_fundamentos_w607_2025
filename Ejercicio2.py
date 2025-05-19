@@ -53,11 +53,13 @@ else:
     while Num_intentos > 0:
         Intento_usuario = int(input(f"Tienes {Num_intentos} intentos restantes. Ahora adivina el número: "))
         print("---------------------------------------------------------------------")
+        print(" ")
         
         
         if Intento_usuario == Num_aleatorio_LOL:
             print("---------------------------------------------------------------------")
             print("¡Felicidades! Has adivinado el número¡¡ !Bien hecho¡.")
+            print(" ")
             print("¡Gracias por jugar!")
             print("---------------------------------------------------------------------")
             bandera = True
@@ -66,7 +68,6 @@ else:
             if Num_intentos > 1:
                 print("El número es mayor, estas muy abajo, compañero, !no te rindas¡.")
         else:
-            if Num_intentos > 1:
                 print("El número es menor, !Bajas más¡")
         
         Num_intentos -= 1
