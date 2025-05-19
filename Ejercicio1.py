@@ -60,5 +60,5 @@ arancel_final = arancel - (arancel * descuento_arancel)
 matricula_final = matricula - (matricula * descuento_matricula)
 
 print("Resumen de descuentos:")
-print(f"- Arancel con descuento: ${arancel_final}")
-print(f"- Matrícula con descuento: ${matricula_final}")
+print(f"- Arancel con descuento: ${int(arancel_final)}")
+print(f"- Matrícula con descuento: ${int(arancel_final)}")

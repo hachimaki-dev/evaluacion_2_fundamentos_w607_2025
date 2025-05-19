@@ -29,14 +29,15 @@ bandera = False
 print("Bienvenido al juego de adivinanza¡")
 print("Ingrese el límite inferior y superior del rango numérico.")
 
-lim_inferior = int(input("Primer Numero (Lim_Inferior): "))
-lim_superior = int(input("Segundo Numero (Lim_Superior): "))
+print("Recuerda que el primer número debe ser menor que el segundo.")
+Lim_inferior = int(input("Ingrese el primer Numero (Lim_Inferior): "))
+Lim_superior = int(input("Ingrese el segundo Numero (Lim_Superior): "))
 
-if lim_inferior >= lim_superior:
+if Lim_inferior >= Lim_superior:
     print("El límite inferior debe ser menor que el límite superior.")
 else:
-    Num_aleatorio_LOL = randint(lim_inferior, lim_superior)
-    print(f"Un número aleatorio ha sido generado entre los numeros {lim_inferior} y {lim_superior}.")
+    Num_aleatorio_LOL = randint(Lim_inferior, Lim_superior)
+    print(f"Un número aleatorio ha sido generado entre los numeros {Lim_inferior} y {Lim_superior}.")
 
     Num_intentos = 3
     while Num_intentos > 0:
