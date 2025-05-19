@@ -44,6 +44,7 @@ else:
         
         if Intento_usuario == Num_aleatorio_LOL:
             print("¡Felicidades! Has adivinado el número¡¡ !Bien hecho¡.")
+            print("¡Gracias por jugar!")
             bandera = True
             break
         elif Intento_usuario < Num_aleatorio_LOL:
@@ -57,6 +58,6 @@ else:
 
     if not bandera:
         print(f"Lo lamento, has agotado tus intentos. El número era {Num_aleatorio_LOL}, Intentalo de nuevo¡ :D.")
-
+        print("¡Gracias por jugar!")
 
         

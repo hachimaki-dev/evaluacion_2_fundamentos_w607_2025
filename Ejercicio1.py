@@ -29,35 +29,36 @@
 # El valor de la matricula es: $90.000
 
 
-Arancel = 1800000
-Matricula = 90000
+arancel = 1800000
+matricula = 90000
 
-Promedio = float(input("Ingrese su promedio: "))
-Quintil = int(input("Ingrese quintil (1 al 5): "))
+promedio = float(input("Ingrese su promedio final: "))
+quintil = int(input("Ingrese su quintil socioeconómico (1 al 5): "))
 
-Descuento_del_arancel = 0
-Descuento_de_la_matricula = 0
+descuento_arancel = 0
+descuento_matricula = 0
 
-if Promedio > 6.0:
-    if Quintil in [1, 2]:
-        Descuento_del_arancel = 0.20
-    elif Quintil in [3, 4]:
-        Descuento_del_arancel = 0.15
-elif 5.0 < Promedio <= 6.0:
-    if Quintil in [1, 2]:
-        Descuento_del_arancel = 0.13
-    elif Quintil in [3, 4]:
-        Descuento_del_arancel = 0.10
+if promedio > 6.0:
+    if quintil == 1 or quintil == 2:
+        descuento_arancel = 0.20
+    elif quintil == 3 or quintil == 4:
+        descuento_arancel = 0.15
+elif promedio > 5.0:
+    if quintil == 1 or quintil == 2:
+        descuento_arancel = 0.13
+    elif quintil == 3 or quintil == 4:
+        descuento_arancel = 0.10
 
-if Quintil in [1, 2, 3]:
-    Descuento_de_la_matricula = 0.10
-    if Promedio >= 5.5:
-        Descuento_de_la_matricula += 0.05 #O tambien podia ser (Descuento_de_la_matricula = (Descuento_de_la_matricula + 0.05)) xdd
-elif Quintil == 5 or Promedio <= 5.0:
-    Descuento_de_la_matricula = 0.0
+if quintil in [1, 2, 3]:
+    descuento_matricula = 0.10
+    if promedio >= 5.5:
+        descuento_matricula += 0.05
+elif quintil == 5 or promedio <= 5.0:
+    descuento_matricula = 0.0
 
-Arancel_final = Arancel * (1 - Descuento_del_arancel)
-Matricula_final = Matricula * (1 - Descuento_de_la_matricula)
+arancel_final = arancel - (arancel * descuento_arancel)
+matricula_final = matricula - (matricula * descuento_matricula)
 
-print(f"El valor del arancel es: ${Arancel_final}")
-print(f"El valor de la matrícula es: ${Matricula_final}")
+print("Resumen de descuentos:")
+print(f"- Arancel con descuento: ${arancel_final:,.0f}")
+print(f"- Matrícula con descuento: ${matricula_final:,.0f}")
