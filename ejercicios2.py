@@ -23,7 +23,6 @@ else:
         print("PISTA: El numero que ingresaste es mayor que el correcto")
     else:
         print("PISTA: El numero que ingresaste es menor que el correcto")
-
     second_attempt = int(input("2do intento, ingrese su numero para adivinar: ")) #SEGUNDO INTENTO
     if second_attempt == guess_num:
         print("Felicitaciones, adivinaste en tu segundo intento")
