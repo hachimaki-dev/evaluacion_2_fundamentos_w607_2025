@@ -24,8 +24,8 @@ elif quintil == 1 or quintil == 2 or quintil == 3:
 else:
     descuento_total_M = valor_matricula  
 
-print(f"Su descuento de arancel es: {descuento_total}")
-print(f"Su descuento total de la matrícula es: {descuento_total_M}")
+print(f"Su descuento de arancel es: {int(descuento_total)}")
+print(f"Su descuento total de la matrícula es: {int(descuento_total_M)}")
 
 
     
