@@ -77,7 +77,7 @@ else:
         print(f"! Lo lamento, has agotado tus intentos. El número era {Num_aleatorio_LOL} ¡")
         print("!Intentalo de nuevo¡ :D. ")
         print(" ")
-        print("¡Gracias por jugar!")
+        print(" ¡Gracias por jugar! ")
         print("---------------------------------------------------------------------")
 
     

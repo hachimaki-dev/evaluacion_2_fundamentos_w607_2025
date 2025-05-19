@@ -36,11 +36,11 @@ print("--------------------------------------------------------------")
 print("----- Bienvenido al sistema de beneficios --------------------")
 print("----- Ingrese su promedio final y quintil socioeconómico -----")
 print("--------------------------------------------------------------")
-print(" ")
+print(". ")
 promedio = float(input("----- Ingrese su promedio final :D -----: "))
-print(" ")
+print(". ")
 quintil = int(input("----- Ingrese su quintil socioeconómico (1 al 5) -----: "))
-print(" ")
+print(". ")
 
 descuento_arancel = 0
 descuento_matricula = 0
