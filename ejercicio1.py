@@ -7,7 +7,7 @@ while True:
         num_de_personas = int(input("¿Cuántas personas deseas registrar?: "))
         break
     except:
-        print("Debes ingresar un número entero")
+        print("Debes ingresar un número entero.")
 
 for contador in range(num_de_personas):
     while True:
