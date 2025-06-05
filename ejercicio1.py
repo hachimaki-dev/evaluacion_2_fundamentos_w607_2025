@@ -1,3 +1,4 @@
+# Ejercicio 1: Sistema de Verificación de Vacunación
 lista = []
 
 dosisCompletas = 0
@@ -23,29 +24,30 @@ while True:
         
 
 ### Paso 2: Registrar las dosis de cada persona
+for i in range(numeroDePersonas):
+    while True:
+                
+        try:
+            dosisQuePosee = int(input("Ingrese la cantidad de dosis que posee: "))
 
-while True:
             
-    try:
-        dosisCompletas = int(input("Ingrese la cantidad de dosis que posee: "))
-
-        
-        if dosisCompletas >= 3:
-                dosisCompletas += 1
-                print("Esquema completo ")
-                lista.append(dosisCompletas)
-
-        elif dosisCompletas < 3:
-                dosisIncompletas += 1
-                print("Esquema incompleto")
-                lista.append(dosisCompletas)
-        else:
-             break 
+            if dosisQuePosee >= 3:
+                    dosisCompletas += 1
+                    print("Esquema completo ")
+                    lista.append(dosisCompletas)
+                    break
+            elif dosisQuePosee < 3:
+                    dosisIncompletas += 1
+                    print("Esquema incompleto")
+                    lista.append(dosisCompletas)
+                    break
+            else:
+                break 
 
 
-    except ValueError:
-        print("Debe ingresar un número entero.")
-        input("Presione la tecla Enter para reintentar")
+        except ValueError:
+            print("Debe ingresar un número entero.")
+            input("Presione la tecla Enter para reintentar")
 
 ### Paso 3: Mostrar el resumen final
 print(f"Se registraron:", dosisCompletas )
