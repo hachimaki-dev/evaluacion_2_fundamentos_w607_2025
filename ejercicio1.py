@@ -1,18 +1,27 @@
 
-
+comple = ""
+incomple = ""
 while True:
     try:
         perso_registrar = int(input("cuantas personas se van a registrar: "))
-        break  # Sale del bucle si no hay error
+        break
     except:
         print("Error, intente de nuevo")
 
-num = []
+for i in range(perso_registrar):
+    while True:
+        try:
+            dosis = int(input("ingrese la cantidad de dosis que tiene:"))
+            break
+        except:
+            print("debe ingresar un numero entero:")
 
-dosis = int(input("cuantas dosis resibiste:"))
-dosis.added(num)
+if dosis >= 3:
+    print("completo")
+    comple += 1
+else:
+    print("incompleto")
+    incomple += 1
 
-print(num)
-
-#Si el usuario ingresa algo que no sea un número entero, mostrar el mensaje: `"Debe ingresar un número entero."
-
+print(f"esta completo {comple}")
+print(f"esta incompleto {incomple}")
