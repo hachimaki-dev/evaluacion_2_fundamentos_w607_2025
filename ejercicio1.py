@@ -1,41 +1,47 @@
+from rich.console import Console 
+from rich.panel import Panel
+from rich.prompt import Prompt
 
-contador_dosisCompletas = 0
-contador_dosisIncompletas = 0
-dosis = 0
+console = Console ()
+
+contador_dosisCompleta = 0
+contador_dosisIncompleta = 0
+
+console.print(Panel.fit("[bold cyan]Registro de esquema de vacuancion[/bold cyan]", title="💉"))
+
 while True:
-    print("buenos dias \n¿cuantas personas se van a registrar el dia de hoy?")
+    console.print("\n[bold]¿Cuantas personas se van a vacunar?[/bold]")
+    cantidad_str = Prompt.ask("N° de personas : ")
     try:
-        cantidad_personas = int(input("N° a registrar: "))
-        if cantidad_personas < 0:
-            print("Por favor ingrese un numero entero")
-            continue
-        elif cantidad_personas == 0:
-            print("Por favor ingrese un numero mayor a 0")
+        cantidad_personas = int(cantidad_str)
+        if cantidad_personas <=0:
+            console.print("[red]Favor ingrese un numero mayor a 0[/red]")
             continue
         break
     except ValueError:
-        print("Por favor, ingrese un numero entero")
+        console.print("[red]Favor ingrese un numero entero positivo[/red]")
 
-while True:
-    for i in range(1, cantidad_personas + 1):
+for i in range(1, cantidad_personas + 1):
+    console.clear()
+    console.print(Panel.fit(f"[bold green]Registro de la persona N°: {i}[/bold green]"))
+    while True:
+        dosis_str = Prompt.ask ("Cuantas dosis ha recibido: ")
         try:
-            dosis = int(input("¿Cuantas dosis ha recibido?: "))
-            if dosis < 0 :
-                print("Por favor ingrese un numero entero POSITIVO")
-            elif dosis == 3:
-                contador_dosisIncompletas += 1
-                print("Su esquema de vacunas esta completo")
-            elif dosis < 3:
-                contador_dosisIncompletas += 1
-                print("Su esquema de vacunas esta incompleto")
+            dosis = int(dosis_str)
+            if dosis < 0:
+                console.print("[red]Favor ingrese un numero mayor o igual a 0")
+                continue
+            elif dosis >= 3:
+                console.print("[green]Esquema completo[/green]")
+                contador_dosisCompleta += 1
+            else:
+                console.print("[yellow]Esquema incompleto[/yellow]")
+                contador_dosisIncompleta += 1
+            break    
         except ValueError:
-            print("Por favor ingrese un numero entero")
+            console.print("[red]Favor ingrese un numero entero positivo[/red]")
 
-print(f"el numero de personas con su esquema de vacunacion completo es: {contador_dosisCompletas}")
-print(f"el numero de personas con su esquema de vacunacion incompleto es: {contador_dosisIncompletas} ")
-
-
-            
-
-
+console.print("\n[bold underline cyan]Resumen del registro:[/bold underline cyan]")
+console.print(f"[green]Esquemas completos:[/green] {contador_dosisCompleta}")
+console.print(f"[yellow]Esquemas incompletos:[/yellow] {contador_dosisIncompleta}")           
 
