@@ -8,17 +8,24 @@ while True:
             print("Debe ingresar un número entero positivo.")
     except ValueError:
         print("Debe ingresar  un número entero.")
-
+vacunados = 0
+no_vacunados = 0
 for i in range(personas): 
     while True:
         try:
             dosis = int(input("Ingrese cantidad de dosis recibidas: "))
-            if dosis > 0:
-                break
-            elif dosis <= 3:
-                print("Esquema completo.")
+            if dosis == 0:
+                print("Ingresa un numero positivo.")
             else:
-                print("Esquema incompleto.")
+                if dosis == 3:
+                    print("Esquema completo.")
+                    vacunados += 1
+                else:
+                    print("Esquema incompleto")
+                    no_vacunados += 1
+                break
         except ValueError:
-            print("Debe ingresar un numero entero.")
-        
+            print("Ingresa un número entero.")
+
+print(f"Se registraron {vacunados} personas con esquema completo.")
+print(f"Se registraron {no_vacunados} personas con esquema incompleto.")
