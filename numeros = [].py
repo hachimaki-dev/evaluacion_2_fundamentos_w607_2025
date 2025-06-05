@@ -12,9 +12,14 @@ def opcion_uno():
                 break
             else:
                 print("Debe estar en el rango de 0 y 100")
+        except ValueError:
+            print("jo")
                 
 
-
+def opcion_dos():
+    if numeros:
+        max(numeros)
+        print(f"El numero más grande es {max(numeros)} ")
 
 
 
@@ -31,7 +36,7 @@ while True:
     print("4. salir")
 
     try:
-        opcion_elegida = int(input("Elige una opcion"))
+        opcion_elegida = int(input("Elige una opcion:"))
         if opcion_elegida == 1:
             opcion_uno()
         elif opcion_elegida == 2:
