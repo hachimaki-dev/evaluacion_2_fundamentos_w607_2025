@@ -39,17 +39,13 @@ def salir():
     else:
         print("volviendo al menu")
         
-while True:
-    try:
-        opcion = int(input("seleccione una opcion "))
-        if opcion == 1:
-            ingresar()
-        elif opcion == 2:
-            mayor()
+
+opcion = int(input("seleccione una opcion "))
+if opcion == 1:
+    ingresar()
+elif opcion == 2:
+     mayor()
         
-        elif opcion == 4:
-            salir()
-            break
-    except:
-        print("opcion ingresada no existe ")
-        print("vuelva a escoger una opcion")
+elif opcion == 4:
+    salir()
+    break
