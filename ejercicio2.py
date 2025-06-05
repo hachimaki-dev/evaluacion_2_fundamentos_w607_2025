@@ -36,8 +36,8 @@ while True:
     elif option == 3:
         print("Se mostrará el promedio de los números ingresados")
         for lista_numeros in range(0, len(num_list)):
-            num_list += num_list(lista_numeros)
-            print(num_list)
+            suma += num_list(lista_numeros)
+            print(num_list) #No cache como se hacía piipipipi
     elif option == 4:
         print("Fin del programa. Adiós.")
         breakpoint
