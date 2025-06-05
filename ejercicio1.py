@@ -16,7 +16,7 @@ print("Ingrese la cantidad de personas que deseas verificar:")
 cantidad_personas=filtro()
 
 for i in range(cantidad_personas):
-    print(f"Ingrese la cantidad de dosis de la persona {i+1}")
+    print(f"Ingrese la cantidad de dosis de la persona {i+1}:")
     dosis=filtro()
     if dosis<3:
         print("Esquema incompleto")
