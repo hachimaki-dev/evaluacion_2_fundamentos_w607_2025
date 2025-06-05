@@ -6,7 +6,7 @@ while True:
         perso_registrar = int(input("cuantas personas se van a registrar: "))
         break
     except:
-        print("Error, intente de nuevo")
+        print("debe ingresar un numero entero")
 
 for i in range(perso_registrar):
     while True:
