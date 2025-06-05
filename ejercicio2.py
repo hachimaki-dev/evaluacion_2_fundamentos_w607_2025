@@ -1,17 +1,19 @@
 numeros = []
 
+suma = 0
+
 while True:
     print(" ")
     print("---- MENU PRINCIPAL ----")
-    print("1.- Ingresar número.")
-    print("2.- Mostrar mayor.")
-    print("3.- Mostrar promedio.")
-    print("4.- Salir.")
-    print(" ")
+    print("1.- Ingresar número.    ")
+    print("2.- Mostrar mayor.      ")
+    print("3.- Mostrar promedio.   ")
+    print("4.- Salir.              ")
+    print("                        ")
 
-    opciones = input("Seleccione una opción: ")
+    elegir_opcion = input("Seleccione una opción: ")
 
-    if opciones == '1':
+    if elegir_opcion == '1':
         while True:
             ingrese_opcion = input("Ingrese número: ")
             try:
@@ -25,7 +27,7 @@ while True:
             except ValueError:
                 print("-- Debe ingresar un número entero --")
 
-    elif opciones == '2':
+    elif elegir_opcion == '2':
         if numeros:
             num_mayor = numeros[0]
             for n in numeros:
@@ -36,19 +38,18 @@ while True:
         else:
             print("--- [No se han ingresado números] ---")
 
-    elif opciones == '3':
+    elif elegir_opcion == '3':
         if numeros:
-            suma = 0
             for n in numeros:
                 suma = (suma + n)
             promedio = suma / len(numeros)
-            print(f"-- El promedio de los números ingresados es: {promedio} --")
+            print(f"-- El promedio de los números ingresados es: {promedio:.2f} --")
         else:
             print("--- No se han ingresado números. ---")
 
-    elif opciones == '4':
+    elif elegir_opcion == '4':
         print("Fin del programa.")
         break
 
     else:
-        print("Debe ingresar una opción válida.")
+        print("opción Inválida, intentelo denuevo.")
