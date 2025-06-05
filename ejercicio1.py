@@ -14,17 +14,20 @@ while True:
 
 #Bucle para preguntar por cada persona que se ingreso la cantidad de dosis que ha recibido en el vacunatorio
 for i in range(num_personas):
-        
-   while True:
-       
-        if cont_dosis < num_personas:
-            try:
-                dosis = int(input("Ingrese las dosis que ha recibido: "))
-                cont_dosis = cont_dosis + 1
-                print(f"Cantidad de veces {cont_dosis}")
-            
-            except ValueError:
-                print("Debe ingresar un número entero")
-        else:
-            print(f"Numero de personas es {num_personas}")
+    while True:
+        try:
+            dosis = int(input(f"Ingrese cantidad de dosis recibidas: "))
+            if dosis >= dosis_esq_completo:
+                print("Esquema completo.")
+                person_esq_completo += 1
+            #Profe al final me enrede y copie lo que tenia antes y le agregue el break en el else y tambien funcionó
+            else:    
+                print("Esquema incompleto.")
+                person_esq_incompleto += 1
             break
+        except ValueError:
+            print("Debe ingresar un numero entero.")
+
+print(f"Se ingresaron {num_personas} personas")
+print(f"Se registraron {person_esq_completo} personas con esquema completo.")
+print(f"Se registraron {person_esq_incompleto} persona con esquema incompleto.")

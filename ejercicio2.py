@@ -1,4 +1,3 @@
-#variable
 numeros = []
 
 while True:
@@ -27,13 +26,14 @@ while True:
             if not numeros:
                 print("No se han ingresado numeros")
             else:
-                print()
+                print(f"El numero mayor es: {max(numeros)}")
         elif opcion == 3:
-            print("Promedio")
+            prom = sum(numeros) / len(numeros)
+            print(f"El promedio de los numeros es {prom}")
         elif opcion == 4:
             print("Fin del programa. Adios")
             break
         else:
             print("Debe ingresar una opción valida.")
     except ValueError:
-        print("Prueba1")
+        print("Ingrese una opción valida")
