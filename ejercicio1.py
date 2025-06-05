@@ -6,6 +6,7 @@ print("Bienvenid@ al sistema de verificación de vacunación.")
 while True:
     try:
         cuantos = int(input("¿Cuantas personas se van a registar?: "))
+        print(f"Se registrarán {cuantos} persona/s")
         if cuantos < 0:
             print("Ingrese un número válido.")
         else:
@@ -31,3 +32,7 @@ for cuantos in range(1, cuantos + 1):
         except ValueError:
             print("Ingrese un número válido.")
 #PASO --> 3: Mostrar el resumen final
+print("Ha finalizado el proceso de verificacion de vacunas")
+print(f"Se registraron un total de {cuantos} persona/s")
+print(f"Se han registrado {esquema_completo} persona/s con esquema completo")
+print(f"Se han registrado {esquema_incompleto} persona/s con esquema incompleto")
