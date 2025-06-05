@@ -1,7 +1,6 @@
 esquema_completo = 0
 esquema_incompleto = 0
 
-
 def esquema_dosis():
     global esquema_completo, esquema_incompleto
 
