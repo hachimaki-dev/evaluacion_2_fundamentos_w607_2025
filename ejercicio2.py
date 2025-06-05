@@ -22,10 +22,14 @@ while True:
                 ingresar_numero = int(ingrese_opcion)
                 if 0 <= ingresar_numero <= 100:
                     numeros.append(ingresar_numero)
-                    print("--- [Ingreso exitoso] ---")
+                    print(" ")
+                    print(f"[-- El número {ingresar_numero} ha sido ingresado correctamente --]")
+                    print(" ")
                     break
                 else:
+                    print(" --------------------------------------------- ")
                     print("---- Debe ingresar un número entre 0 y 100 ----")
+                    print(" --------------------------------------------- ")
             except ValueError:
                 print(" -------------------------------------------------------------------------")
                 print("-- Solamente ingresar números enteros (Letras o decimales no permitidos) --")
