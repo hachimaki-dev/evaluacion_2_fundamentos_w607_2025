@@ -16,7 +16,7 @@ def verificacionVacunacion():
     for i in range(personas):
         while True:
             try:
-                dosis = int(input("¿Cuantas dosis a resivido esta persona?: "))
+                dosis = int(input("¿Cuantas dosis a recibido esta persona?: "))
                 if dosis >= 3:
                     print("Esquema completo")
                     esquema_completo += 1
@@ -28,7 +28,6 @@ def verificacionVacunacion():
             except ValueError:
                 print("Debe ingresar un numero entero")
     # Resumen Final
-    print("Se registraron",esquema_completo,"personas con Esquema Completo\n" \
-    "y", esquema_incompleto,"con Esquema Incompleto" )
+    print("Se registraron",esquema_completo,"personas con Esquema Completo y", esquema_incompleto,"con Esquema Incompleto" )
 
 verificacionVacunacion()
