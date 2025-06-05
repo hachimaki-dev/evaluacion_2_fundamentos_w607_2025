@@ -1,33 +1,30 @@
-personas = int(input("cuántas personas se van a registrar: "))
+personas = 0
 while personas < 1:
     try:
-        personas = int(input("ingrese una cantidad de personas valido: "))
-
+        personas = int(input("Ingrese una cantidad de personas valida: "))
     except ValueError:
-        
-        print("solo puede ingresar numeros")
+        print("Error 202: Solo puedes ingresar numeros.")
 
-
-
+completo = 0
+incompleto = 0
 i= 0
 for i in range (personas):
     
-    dosis = int(input("cuántas dosis ha recibido"))
+    dosis = 0
     while dosis < 1:
         try:
-            dosis = int(input("ingrse dosis validas recibidas"))
-
+            dosis = int(input("Ingrse una cantidad de dosis valida: "))
         except ValueError:
-            print("solo puede ingresar numeros")
-
+            print("Error 202: solo puede ingresar numeros.")
 
     if dosis >= 3:
-        print("Esquema ompleto")
+        print("esquema completo")
+        completo += 1
     elif dosis < 3:
-        print("Esquema incompleto")
+        print("esquema incompleto")
+        incompleto += 1
     else:
-        print("error")
+        print("Erro 203: Lo lamentamos, Hubo un error inesperado.")
 
-
-print("personas con esquema completo")
-print("personas con esquema incompleto")
+print("personas con esquema completo", completo)
+print("personas con esquema incompleto", incompleto)
