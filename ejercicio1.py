@@ -1,5 +1,4 @@
 entero = False
-dosis1 = False
 completo = 0
 incompleto = 0
 
@@ -11,11 +10,11 @@ while entero == False:
         print("Debe ingresar un número entero")
         entero = False
 
-
-while dosis1 == False:
-    try:
-        for cantidad in range(personas):
-            dosis = int(input("Ingrese cantidad de dosis recibidas"))
+for i in range(personas):
+    dosis1 = False
+    while dosis1 == False:
+        try:
+            dosis = int(input(f"Ingrese cantidad de dosis recibidas de la persona {i + 1}\n"))
             dosis1 = True
             if dosis >= 3:
                 print("Esquema completo")
@@ -24,11 +23,8 @@ while dosis1 == False:
                 print("Esquema incompleto")
                 incompleto = incompleto +1
         
-        print(f"Se reigstraron {completo} con esquema completo")
-        print(f"Se registraron {incompleto} con esquema incompleto")
+        except ValueError:
+            print("Debe ingresar un número entero")
 
-    except ValueError:
-        print("Debe ingresar un número entero")
-        dosis1 = False
-
-    
+print(f"Se reigstraron {completo} con esquema completo")
+print(f"Se registraron {incompleto} con esquema incompleto")
