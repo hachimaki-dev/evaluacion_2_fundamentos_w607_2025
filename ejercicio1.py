@@ -14,13 +14,19 @@ while True:
         print("ingrese un número válido.")
 
 #PASO --> 2: Registrar las dosis de cada persona
-for cuantos in range(cuantos, cuantos + 1):
+for cuantos in range(1, cuantos + 1):
     while True:
         try:
             dosis = int(input("Cuantas dosis ha recibido?: "))
             if dosis <0:
                 print("Ingrese un número válido.")
-            else:
+            elif 0 < dosis < 3:
+                esquema_incompleto += 1
+                print("Esquema incompleto")
+                break
+            elif dosis >= 3:
+                esquema_completo += 1
+                print("Esquema completo")
                 break
         except ValueError:
             print("Ingrese un número válido.")
