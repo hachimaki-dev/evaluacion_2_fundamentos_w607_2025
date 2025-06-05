@@ -7,9 +7,6 @@ Necesitas crear un programa en Python que funcione como un sistema simple para v
 
 ## Objetivos de Aprendizaje
 
-- Usar bucles `while` y `for`
-- Manejar excepciones con `try-except`
-- Trabajar con contadores y acumuladores
 - Validar entrada de datos del usuario
 
 ## Instrucciones Paso a Paso
@@ -102,3 +99,4 @@ Se registraron 1 persona con esquema incompleto.
 3. **Define constantes**: El número de dosis necesarias (3) puede ser una variable
 4. **Prueba tu código**: Intenta ingresar datos inválidos para verificar que funcione
 5. **Revisa los mensajes**: Asegúrate de que coincidan exactamente con lo solicitado
+

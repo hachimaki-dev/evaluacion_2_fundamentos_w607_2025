@@ -18,6 +18,9 @@ def no_numeros_ingresados(numero_mayor, numero_menor):
     
     return numero_mayor is None and numero_menor is None
 
+acumulador_promedio = 0
+contador_promedio = 0
+
 while True:
     mostrar_menu()
     opcion = input("Seleccione una opción (1-4): ")
@@ -25,6 +28,8 @@ while True:
         try:
             numero = int(input("Ingrese un numero positivo entre 0 y 100: "))
             print(f"Se ha ingresado elnumero con exito.")
+            acumulador_promedio = acumulador_promedio + numero
+            contador_promedio = contador_promedio + 1
             if numero_mayor is None and numero_menor is None:
                 numero_mayor = numero
                 numero_menor = numero
@@ -55,7 +60,9 @@ while True:
     else:
         print("Opción no válida, por favor ingrese un número entre 1 y 4.")
 
-#Fin del ejercicio.
+print("El promedio es: ")
+promedio = acumulador_promedio / contador_promedio
+print(promedio)
 
 
 
