@@ -13,17 +13,25 @@ def opcion_uno():
             else:
                 print("Debe estar en el rango de 0 y 100")
         except ValueError:
-            print("jo")
+            print("No puede ser decimal ni letras, solo numeros")
                 
 
 def opcion_dos():
     if numeros:
         max(numeros)
         print(f"El numero más grande es {max(numeros)} ")
+    else:
+        print("No se han ingresado numeros")
 
 
 
-
+def opcion_tres():
+    if numeros:
+        promedio = sum(numeros)/len(numeros)
+        print(f"El promedio es {promedio}")
+    else:
+        print("No se han ingresado numeros")
+        
 
 
 
@@ -44,7 +52,11 @@ while True:
         elif opcion_elegida == 3:
             opcion_tres()
         elif opcion_elegida == 4:
-            print("##El progama termino##")
+            print("###---FIN DEL PROGRAMA---###")
             break
+        else:
+            print("ingrese una opcion valida")
+            continue
     except ValueError:
-        print("Debe ser entre la opcion 1 y 4")
+        print("Debe ingresar una opcion valida")
+        continue
