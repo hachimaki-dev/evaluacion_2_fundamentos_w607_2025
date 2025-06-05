@@ -16,7 +16,7 @@ while True:
     if elegir_opcion == '1':
         while True:
             print(" ")
-            ingrese_opcion = input("[-- Ingrese número --] : ")
+            ingrese_opcion = input("[-- Ingrese número --]: ")
             print(" ")
             try:
                 ingresar_numero = int(ingrese_opcion)
