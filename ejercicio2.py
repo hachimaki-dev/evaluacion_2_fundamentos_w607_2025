@@ -15,7 +15,9 @@ while True:
 
     if elegir_opcion == '1':
         while True:
-            ingrese_opcion = input("Ingrese número: ")
+            print(" ")
+            ingrese_opcion = input("[-- Ingrese número --] : ")
+            print(" ")
             try:
                 ingresar_numero = int(ingrese_opcion)
                 if 0 <= ingresar_numero <= 100:
@@ -25,7 +27,9 @@ while True:
                 else:
                     print("---- Debe ingresar un número entre 0 y 100 ----")
             except ValueError:
-                print("-- Debe ingresar un número entero --")
+                print(" -------------------------------------------------------------------------")
+                print("-- Solamente ingresar números enteros (Letras o decimales no permitidos) --")
+                print(" -------------------------------------------------------------------------")
 
     elif elegir_opcion == '2':
         if numeros:
@@ -36,7 +40,9 @@ while True:
             print(" ")
             print(f"[-- El número mayor hasta el momento es: {num_mayor} --]")
         else:
+            print(" ")
             print("--- [No se han ingresado números] ---")
+            print(" ")
 
     elif elegir_opcion == '3':
         if numeros:
@@ -45,11 +51,15 @@ while True:
             promedio = suma / len(numeros)
             print(f"-- El promedio de los números ingresados es: {promedio:.2f} --")
         else:
+            print(" ")
             print("--- No se han ingresado números. ---")
+            print(" ")
 
     elif elegir_opcion == '4':
         print("Fin del programa.")
         break
 
     else:
-        print("opción Inválida, intentelo denuevo.")
+        print(" ----------------------------------------------------------------------------------------------------- ")
+        print("opción Inválida, intentelo denuevo [Solo numeros enteros del 1 al 4 (Letras y decimales no permitidos)]")
+        print(" ----------------------------------------------------------------------------------------------------- ")
