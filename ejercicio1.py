@@ -1,5 +1,6 @@
 esquemacompleto = 0
 esquemaIncompleto = 0
+
 print("----Bienvenido al sistema de vacunas----")
 while True:
     try:
