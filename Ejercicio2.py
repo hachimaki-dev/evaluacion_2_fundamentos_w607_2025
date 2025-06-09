@@ -1,54 +1,58 @@
 import time
 
 def menu():
-    print("===MENU===")
+    print("===MENU PRINCIPAL===")
     print("1. Ingresar Numero")
     print("2. Mostrar Mayor")
     print("3. Mostrar Promedio")
-    print("4. Salir")
-    opcion_menu = int(input("Ingrese numero : \n"))
-    return opcion_menu
+    print("4. Mostrar Numeros Guardados")
+    print("5. Salir")
+    try:
+        opcion = int(input("Ingrese opcion : \n"))
+        return opcion
+    except ValueError:
+        print("Ingrese un numero valido.")
+        return None
 
-numero = None
-cant_numeros = 0
 numeros = []
-def ingresar_numero():
-    print("===NUMEROS A INGRESAR===")
-    cant_numeros = int(input("¿Cuantos numeros desea ingresar? : \n"))
-    while 0 < cant_numeros:
-        try:
-            print("===INGRESAR NUMERO===")
-            numero = int(input("Ingrese el numero : \n"))
-            if 0 <= numero <= 100:
-                print("Numero Valido.")
-                cant_numeros -= 1
-                numeros.append(numero) 
-                break
-            else:
-                print("Ingrese un numero dentro del rango (0-100)")
-        except ValueError:
-            print("Ingrese un numero entero.")
 
-def mostrar_mayor():
-    print("===MOSTRAR MAYOR===")
-    if numero:
-        print(f"El numero mayor es {numero}")
+while True:
+    opcion = menu()
 
-def opciones():
-    while True:
-        try:
-            respuesta_menu = menu()
-            if respuesta_menu == 1:
-                ingresar_numero()
-            elif respuesta_menu == 2:
-                mostrar_mayor()
-            elif respuesta_menu == 4:
-                print("Saliendo del programa...")
-                time.sleep(2)
-                break
-            else:
-                print("Ingrese un numero (1-4)")
-        except ValueError:
-            print("Ingrese un numero valido.")
-
-opciones()
+    if opcion == 1:
+        while True:
+            try:
+                num_ingresado = int(input("Ingrese un numero (0 - 100): \n"))
+                if 0 <= num_ingresado <= 100:
+                    numeros.append(num_ingresado)
+                    print(f"Ingreso exitoso, {num_ingresado}")
+                    break
+                else:
+                    print("Debe estar dentro del rango!! (0-100)")
+            except ValueError:
+                print("Ingrese numero valido.")
+    elif opcion == 2:
+        if numeros:
+            mayor = max(numeros)
+            print(f"Numero mayor : {mayor}")
+        else:
+            print("No hay numeros ingresados.")
+    elif opcion == 3:
+        if numeros:
+            promedio = sum(numeros) / len(numeros)
+            print(f"Promedio : {promedio: .2f}")
+        else:
+            print("No hay numeros ingresados.")
+    elif opcion == 4:
+        if numeros:
+            print(f"Numeros guardados: {numeros}")
+        else:
+            print("No hay numeros guardados.")
+    elif opcion == 5:
+        print("Saliendo del programa...")
+        time.sleep(2)
+        break
+    elif opcion is None:
+        continue
+    else:
+        print("Opcion no valida.")
