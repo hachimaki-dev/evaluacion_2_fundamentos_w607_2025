@@ -1,37 +1,39 @@
 # Ejercicio 2: Sistema de Menú con Manejo de Números
 numeros = []
-
+promedio = 0.0
 def menuPrincipal():
     while True:
+        try:
+            print("Bienvenido a este nuevo menú interactivo en donde tienes la posibilidad de ingresar tantos numeros como desees, saber qué numero es mayor y poder sacar el promedio")
+            print("Sigue atentamente las instrucciones a continuación: ")
 
-        print("Bienvenido a este nuevo menú interactivo en donde tienes la posibilidad de ingresar tantos numeros como desees, saber qué numero es mayor y poder sacar el promedio")
-        print("Sigue atentamente las instrucciones a continuación: ")
+            print("==========MENÚ PRINCIPAL===========")
+            print("1. Ingresar un número")
+            print("2. Mostrar número mayor")
+            print("3. Mostrar promedio")
+            print("4. Salir")
 
-        print("==========MENÚ PRINCIPAL===========")
-        print("1. Ingresar un número")
-        print("2. Mostrar número mayor")
-        print("3. Mostrar promedio")
-        print("4. Salir")
+            print("====================================")
 
-        print("====================================")
+            eleccion = input("Elige una opción: ") 
 
-        eleccion = input("Elige una opción: ") 
-
-        print("====================================")
-        print("Ingreso exitoso")
+            print("====================================")
+            print("Ingreso exitoso")
 
 
-        if eleccion == "1":
-            ingresarNumero()
-        elif eleccion == "2":
-            mostrarMayor()
-        elif eleccion == "3":
-            mostrarPromedio()
-        else:
-            eleccion == "4"
-            print("====================================")            
-            print("¡¡¡Vuelve pronto!!!")
-            break
+            if eleccion == "1":
+                ingresarNumero()
+            elif eleccion == "2":
+                mostrarMayor()
+            elif eleccion == "3":
+                mostrarPromedio()
+            else:
+                eleccion == "4"
+                print("====================================")            
+                print("¡¡¡Vuelve pronto!!!")
+                break
+        except ValueError:
+            print("ERROR")
 
 
 
@@ -64,12 +66,12 @@ def mostrarMayor():
 
 def mostrarPromedio():
     while True:
-        
-
-
-
-
-        print("El promedio de todos los numeros es: ")
+        try:
+            if numeros:
+                promedio = sum(numeros) / len(numeros)
+                print(f"El promedio de los números es: {promedio:.2f}")
+        except ValueError:
+                print("No se han ingresado números")  
 
 
 
