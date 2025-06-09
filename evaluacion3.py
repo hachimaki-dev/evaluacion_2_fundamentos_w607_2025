@@ -1,6 +1,4 @@
 numeros = []
-suma = 0
-contador = 0
 
 def menu_interactivo():
 
@@ -35,10 +33,7 @@ while True:
 
     elif opcion == 3:
         if numeros:
-            for i in numeros:
-                suma = suma + i
-                contador = contador + 1
-                promedio = suma / contador
+                promedio = sum(numeros) / len(numeros)
                 print(f"El promedio de los números ingresados es: , {promedio:.2f}")
         else:
             print("No se han ingresado números.")        
