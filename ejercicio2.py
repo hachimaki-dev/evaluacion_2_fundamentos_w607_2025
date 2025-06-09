@@ -46,8 +46,10 @@ def opcion2():
         print("NO HAY DATOS SUFICIENTES PARA ANALIZAR")
     elif num1 > num2:
         print("EL NUMERO MAS GRANDE ES: ", num1)
+        opcion_menu()
     elif num1 < num2:
         print("EL NUMERO MAS GRANDE ES: ", num2)
+        opcion_menu()
 
 
 promedio = None
@@ -55,6 +57,7 @@ def opcion3():
     global promedio
     promedio= (num1 + num2 ) / 2 
     print("EL PROMEDIO ES: ", promedio)
+    opcion_menu()
 
 
 
