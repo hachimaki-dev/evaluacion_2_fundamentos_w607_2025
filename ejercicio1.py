@@ -18,7 +18,7 @@ for i in range (1,cantidad +1):
     print(f"peronas {i}:")
 dosis = pedir_entero("Ingrese la cantidad de personas registradas")  
 
-if dosis <=3:
+if dosis >=3:
     print("Esquema completo")
 else:
     print("Esquema incompleto")
