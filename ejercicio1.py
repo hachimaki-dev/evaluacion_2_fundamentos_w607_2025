@@ -11,7 +11,7 @@ console.print(Panel.fit("[bold cyan]Registro de esquema de vacuancion[/bold cyan
 
 while True:
     console.print("\n[bold]¿Cuantas personas se van a vacunar?[/bold]")
-    cantidad_str = Prompt.ask("N° de personas : ")
+    cantidad_str = Prompt.ask("N° de personas ")
     try:
         cantidad_personas = int(cantidad_str)
         if cantidad_personas <=0:
@@ -22,7 +22,6 @@ while True:
         console.print("[red]Favor ingrese un numero entero positivo[/red]")
 
 for i in range(1, cantidad_personas + 1):
-    console.clear()
     console.print(Panel.fit(f"[bold green]Registro de la persona N°: {i}[/bold green]"))
     while True:
         dosis_str = Prompt.ask ("Cuantas dosis ha recibido: ")
