@@ -34,9 +34,7 @@ while True:
     elif opcion==3:
         if len(numeros)>0:
             suma_de_numeros=0
-            for d in numeros:
-                ##suma_de_numeros+=numeros(d)
-                suma_de_numeros=sum(numeros)
+            suma_de_numeros=sum(numeros)
             promedio = suma_de_numeros/len(numeros)
             print("El promedio de los números ingresados es: ",promedio)
         else:
