@@ -34,10 +34,8 @@ while num_entero == False:
             print(f"el numero mayor hasta el momento es: {num_mayor}")
 
     if opcion == 3:
-        cantidad = len(numeritos)
-        suma = numeritos
-        promedio = suma / cantidad
-        print(f"el promedio de los numeros es: {promedio} ")
+        promedio = sum(numeritos) / len(numeritos
+        print(f"el promedio de los numeros es: {round(promedio,2)} ")
         
        
 
