@@ -32,7 +32,12 @@ def inicio():
                     print("el numero mayor es:" , max(numeros)) 
                 else: print("no se han ingresado numeros")
 
-          
+            elif opcion == 3:
+                if numeros:
+                   promedio = sum(numeros) / len(numeros)
+                   print("el promedio total de los numeros es: ," , promedio)
+                else:
+                    print("no se han ingresado numeros")
 
             elif opcion == 4:
                 print("programa finalizado")
