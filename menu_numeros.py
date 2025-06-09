@@ -1,6 +1,6 @@
 numeros = []
 menu = 1
-while menu == True:
+while menu == True:   
     print("##### MENÚ #####")
     print("1.- Ingresar número.")
     print("2.- Mostrar mayor.")
