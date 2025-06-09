@@ -36,8 +36,8 @@ while True:
     elif option == 3:
         print("Se mostrará el promedio de los números ingresados")
         suma = sum(num_list)
-        promedio = suma/(len(num_list))
-        print(f"El promedio de la lista de numeros es {promedio}")
+        promedio = suma/len(num_list)
+        print(f"El promedio de la lista de numeros es {promedio:.2f}")
     elif option == 4:
         print("Fin del programa. Adiós.")
         break
