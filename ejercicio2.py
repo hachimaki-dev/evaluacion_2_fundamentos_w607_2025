@@ -1,33 +1,27 @@
-istrar =promedio
-print("4-salir")
-ngresar_numero = "1-ingresar un numero"
-mostrar_mayor = "2-mostrar mayor"
-mostrar_promedio = "3-mostrar promedio"
-salir = "4-salir"
-
-eleccion = ""
-print("1-ingresar un numero")
-print("2-mostrar mayor")
-print("3-mostrar promedio")
-print("4-salir")
 while True:
     try:
-        eleccion = int(input("elija:"))
-        print("1-ingresar un numero")
-        print("2-mostrar mayor")
-        print("3-mostrar promedio")
-        print("4-salir")
+        total_personas = int(input("Ingrese la cantidad de personas a registrar: "))
         break
     except:
         print("debe ingresar un numero entero")
 
+esquema_completo = 0
+esquema_incompleto = 0
 
+for i in range(total_personas):
+    while True:
+        try:
+            dosis = int(input("Ingrese cantidad de dosis recibidas: "))
+            break
+        except:
+            print("Debe ingresar un número entero.")
+    
+    if dosis >= 3:
+        print("Esquema completo.")
+        esquema_completo += 1
+    else:
+        print("Esquema incompleto.")
+        esquema_incompleto += 1
 
-while True:
-    try:
-        numero = int(input("ingrese un numero entero:"))
-        break
-    except:
-        print("debe ingresar un numero entero:")
-
-lista = [numero]
+print(f"\nSe registraron {esquema_completo} personas con esquema completo.")
+print(f"Se registraron {esquema_incompleto} persona{'s' if esquema_incompleto != 1 else ''} con esquema incompleto.")
