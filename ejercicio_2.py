@@ -1,6 +1,6 @@
 import os
 
-# Control parea guardar los numeros ingreasdps
+# Control parea guardar los numeros ingresados
 numeros_guardados = []
 
 # Bandera para controlar el menu principal
@@ -18,7 +18,7 @@ while menu_activo:
     print("4. Salir del programa")
     print("======================")
 
- # Capturar opción del usuario
+ # Opciónes del usuario
     opcion = input("Elige una opción (1-4): ")
     
     if opcion == "1":
@@ -50,8 +50,7 @@ while menu_activo:
         menu_activo = False  # Cambiar bandera para salir del bucle
 
     else:
-        print("\nOpción no válida. Por favor elige un número del 1 al 4.")
         input("Presiona ENTER para continuar...")
 
 # Mensaje final fuera del bucle
-print("El chauuu!.")
+print("Gracias por usar el programa chao!.")
