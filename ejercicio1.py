@@ -1,27 +1,40 @@
+numeros = []
 
-comple = ""
-incomple = ""
 while True:
+    print("\n--MENU PRINCIPAL--")
+    print("1-ingresar numero")
+    print("2-mostrar mayor")
+    print("3-mostrar promedio")
+    print("4-salir")
+
     try:
-        perso_registrar = int(input("cuantas personas se van a registrar: "))
-        break
-    except:
-        print("debe ingresar un numero entero")
+        opcion = int(input("ingrese su opcion"))
+    except ValueError:
+        print("debe ingresar un numero entero para la opcion.")
+        continue
 
-for i in range(perso_registrar):
-    while True:
+    if opcion == 1:
         try:
-            dosis = int(input("ingrese la cantidad de dosis que tiene:"))
-            break
-        except:
-            print("debe ingresar un numero entero:")
+            numero = int(input("ingrese un numero entero entre 0 y 100"))
+        except ValueError:
+            print("debe ingresar un numero entero valido")
 
-if dosis >= 3:
-    print("completo")
-    comple += 1
-else:
-    print("incompleto")
-    incomple += 1
+    elif opcion == 2:
+        if numeros:
+             print("El número mayor es:", max(numeros))
+        else:
+            print("Aún no se han ingresado números.")
 
-print(f"esta completo {comple}")
-print(f"esta incompleto {incomple}")
+    elif opcion == 3:
+        if numeros:
+            promedio = sum(numeros) / len(numeros)
+            print("El promedio es:", promedio)
+        else:
+            print("aun no se han ingresado numeros")
+
+    elif opcion == 4:
+        print("Saliendo del programa...")
+        break
+    
+    else:
+        print("Opción no válida. Intente nuevamente.")
