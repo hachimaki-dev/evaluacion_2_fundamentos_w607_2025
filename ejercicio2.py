@@ -15,8 +15,8 @@ def ingresar():
                 break
             else:
                 print("numero ingresado esta fuera del rango solicitado")
-            break
-        except:
+            
+        except ValueError:
             print("numero ingresado es incorrecto")
             print("porfavor ingrese un numero valido (numero entero)")
             print("numero ingresado esta fuera del rango solicitado")
@@ -48,4 +48,4 @@ elif opcion == 2:
         
 elif opcion == 4:
     salir()
-    break
+    
