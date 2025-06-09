@@ -67,8 +67,7 @@ def main():
     print(f"Esquema completo: {completo}")
     print(f"Esquema incompleto: {incompleto}")
 
-if __name__ == "__main__":
-    main()
+main()
 
                 
 
