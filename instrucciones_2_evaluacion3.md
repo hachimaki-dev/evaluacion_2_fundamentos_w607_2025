@@ -7,7 +7,16 @@ Debes crear un programa en Python que muestre un menú interactivo que permita a
 ## Objetivos de Aprendizaje
 
 - Crear menús interactivos con bucles
-- Validar entrada de datos con rangos específicos
+- Validar entrada de while True:
+    try:
+        numero = int(input("Ingrese número: "))
+        if 0 <= numero <= 100:
+            # Número válido
+            break
+        else:
+            print("Debe ingresar un número entre 0 y 100!!")
+    except:
+        print("Debe ingresar un número entero!!")datos con rangos específicos
 - Manejar listas o variables para almacenar múltiples valores
 - Calcular estadísticas básicas (mayor, promedio)
 - Controlar el flujo del programa con estructuras condicionales
@@ -93,16 +102,7 @@ Tienes dos opciones para guardar los números:
 
 ```python
 # Ejemplo de validación
-while True:
-    try:
-        numero = int(input("Ingrese número: "))
-        if 0 <= numero <= 100:
-            # Número válido
-            break
-        else:
-            print("Debe ingresar un número entre 0 y 100!!")
-    except:
-        print("Debe ingresar un número entero!!")
+
 ```
 
 ### Cálculo del Promedio
