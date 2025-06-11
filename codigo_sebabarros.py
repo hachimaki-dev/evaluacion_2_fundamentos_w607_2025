@@ -1,1 +1,1 @@
-print("Hola soy el presente o ¿tal vez el pasado?")
+print("y yo soy el futuro")
