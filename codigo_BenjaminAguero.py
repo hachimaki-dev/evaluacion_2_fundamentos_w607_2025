@@ -1,6 +1,3 @@
-print("Y yo soy el futuro")
-
-
 
 
 
