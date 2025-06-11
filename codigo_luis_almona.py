@@ -1,1 +1,24 @@
-print("Hola soy el pasado")
+print("y yo ssoy el futuro")
+print("Hola soy luis")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
