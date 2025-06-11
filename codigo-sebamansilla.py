@@ -1,1 +1,1 @@
-print("este es el codigo del pasado")
+print("este es el codigo del futuro, o el pasado")
