@@ -1,1 +1,1 @@
-print("Soy una línea de texto del pasado")
+print("Soy una línea de texto del presente")
