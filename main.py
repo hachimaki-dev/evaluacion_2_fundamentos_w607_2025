@@ -1,6 +1,6 @@
 print("Ingrese un numero entero")
 
-while True:
+while False:
     try:
         numero_entero =int(input())
         if numero_entero > 5:
