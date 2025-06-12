@@ -14,3 +14,22 @@ if numero_entero > 5:
     print("Es mayor que 5.")
 else:
     print("Es menor que 5.")
+    dlw{ñl{awl{awfl{
+        awflaw.
+        {f.
+        .faw
+        f.awfl{fwafl
+        fwafl
+        
+        filterfalkwg
+        ga
+        khae
+        kaehkpwatkawykp
+        awkawgyk
+        akñ
+        akñ
+        aehkñ
+        aekñ
+        awl´
+        }}
+    }}}}
