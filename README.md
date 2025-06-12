@@ -1,151 +1,554 @@
-# Evaluación 2 – Fundamentos de Programación – Sección W607 – Año 2025
+# Guía rapida de Git y GitHub
 
-## 🧠 Instrucciones
+## 1. Introducción
 
-1. Este repositorio contiene dos ejercicios.
-2. Debes resolverlos individualmente.
-3. Lee las instrucciones específicas en:
-   - `Instrucciones_ejercicio_n1.md`
-   - `Instrucciones_ejercicio_n2.md`
-4. Crea un archivo `.py` para cada ejercicio:
-   - `ejercicio1.py`
-   - `ejercicio2.py`
-5. Súbelos al mismo repositorio, pero **en una rama nueva con tu nombre** (ver abajo).
+### ¿Qué es Git?
+Git es un sistema de control de versiones que te permite rastrear los cambios en tus archivos de código a lo largo del tiempo. Piensa en Git como un "historial detallado" de tu proyecto que te permite:
+- Ver qué cambios hiciste y cuándo
+- Volver a versiones anteriores si algo sale mal
+- Trabajar en paralelo con otros programadores sin interferir
 
----
+### ¿Qué es GitHub?
+GitHub es una plataforma en línea que usa Git para almacenar y compartir proyectos de código. Es como "Google Drive para programadores", pero mucho más poderoso.
 
-## 🧪 ¿Cómo parto?
+**Analogía simple**: Si Git es tu "cuaderno de apuntes" local, GitHub es la "biblioteca" donde guardas y compartes tus cuadernos con otros estudiantes.
 
-### 1. Clona este repositorio
+### ¿Por qué es esencial en equipos?
+- **Colaboración**: Varios programadores pueden trabajar en el mismo proyecto sin pisarse
+- **Respaldo**: Tu código está seguro en la nube
+- **Historial**: Puedes ver quién cambió qué y cuándo
+- **Reversión**: Si algo se rompe, puedes volver a una versión que funcionaba
+
+## 2. Configuración inicial
+
+### Instalar Git en Windows
+
+1. Ve a [https://git-scm.com/download/win](https://git-scm.com/download/win)
+2. Descarga la versión más reciente
+3. Ejecuta el instalador con las opciones por defecto
+4. Verifica la instalación abriendo la terminal de Windows y ejecutando:
 
 ```bash
-git clone https://github.com/hachimaki-dev/evaluacion_2_fundamentos_w607_2025.git
-cd evaluacion_2_fundamentos_w607_2025
-````
-
----
-
-### 2. Crea tu rama
-
-Usa tu nombre completo, todo en minúsculas y sin tildes:
-
-```bash
-git checkout -b evaluacion/nombre_apellido1_apellido2
+git --version
 ```
 
-Ejemplo:
+### Configuración básica
+
+Configura tu identidad (solo necesitas hacerlo una vez):
 
 ```bash
-git checkout -b evaluacion/camila_rodriguez_torres
+git config --global user.name "Tu Nombre"
+git config --global user.email "tu-email@ejemplo.com"
 ```
 
----
-
-### 3. Crea los archivos y resuelve los ejercicios
+Verifica la configuración:
 
 ```bash
-touch ejercicio1.py
-touch ejercicio2.py
+git config --list
 ```
 
-Edita cada archivo según lo que piden los `.md` del repo.
+### Conectar con GitHub
 
----
+#### Opción 1: HTTPS (Recomendado para principiantes)
+1. Crea una cuenta en [GitHub.com](https://github.com)
+2. Cuando hagas push por primera vez, te pedirá usuario y contraseña
+3. Desde 2021, necesitas usar un "Personal Access Token" en lugar de tu contraseña:
+   - Ve a GitHub → Settings → Developer settings → Personal access tokens
+   - Genera un nuevo token con permisos de "repo"
+   - Guarda el token en un lugar seguro
 
-### 4. Guarda y sube tus cambios
+#### Opción 2: SSH (Más avanzado)
+1. Genera una clave SSH:
+```bash
+ssh-keygen -t ed25519 -C "tu-email@ejemplo.com"
+```
+2. Presiona Enter para aceptar la ubicación por defecto
+3. Copia la clave pública:
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+4. Ve a GitHub → Settings → SSH and GPG keys → New SSH key
+5. Pega la clave y guarda
+
+## 3. Crear un repositorio
+
+### Crear un repositorio local
+
+Navega a tu carpeta de proyecto y ejecuta:
 
 ```bash
-git add ejercicio1.py ejercicio2.py
-git commit -m "Evaluación completa"
-git push origin evaluacion/nombre_apellido1_apellido2
+cd mi-proyecto-python
+git init
 ```
 
+Esto crea un repositorio Git vacío en tu carpeta.
+
+### Crear un repositorio en GitHub
+
+1. Ve a GitHub.com
+2. Haz clic en el botón "New" (verde)
+3. Nombra tu repositorio
+4. Selecciona "Public" o "Private"
+5. No inicialices con README si ya tienes archivos locales
+6. Haz clic en "Create repository"
+
+### Vincular repositorio local con GitHub
+
+```bash
+git remote add origin https://github.com/tu-usuario/nombre-repo.git
+```
+
+### Hacer el primer push
+
+```bash
+# Agregar todos los archivos
+git add .
+
+# Hacer commit con mensaje descriptivo
+git commit -m "Primer commit: estructura inicial del proyecto"
+
+# Subir al repositorio remoto
+git push -u origin main
+```
+
+## 4. Estructura de trabajo en equipo
+
+### ¿Qué es una rama (branch)?
+
+Una rama es una línea de desarrollo independiente. Imagina que el proyecto principal (`main`) es el tronco de un árbol, y las ramas son las ramas que salen de él. Cada programador puede trabajar en su propia rama sin afectar el código principal.
+
+### Comandos básicos de ramas
+
+```bash
+# Ver todas las ramas
+git branch
+
+# Crear una nueva rama
+git branch nombre-rama
+
+# Cambiar a una rama
+git checkout nombre-rama
+
+# Crear y cambiar a una rama en un solo comando
+git checkout -b nombre-rama
+
+# Eliminar una rama
+git branch -d nombre-rama
+```
+
+### Flujo de trabajo colaborativo
+
+1. **Clonar el repositorio**:
+```bash
+git clone https://github.com/usuario/proyecto.git
+cd proyecto
+```
+
+2. **Crear una rama para tu feature**:
+```bash
+git checkout -b feature/nueva-funcionalidad
+```
+
+3. **Hacer cambios y commits**:
+```bash
+# Editar archivos
+git add archivo-modificado.py
+git commit -m "Añadir función de validación de email"
+```
+
+4. **Subir la rama**:
+```bash
+git push origin feature/nueva-funcionalidad
+```
+
+5. **Crear Pull Request en GitHub**:
+   - Ve a GitHub
+   - Haz clic en "Compare & pull request"
+   - Describe tus cambios
+   - Asigna reviewers si es necesario
+
+6. **Merge después de revisión**:
+   - El líder del equipo o reviewer aprueba
+   - Se hace merge a la rama principal
+   - Se puede eliminar la rama feature
+
+## 5. Buenas prácticas
+
+### Nombres de ramas claros
+
+```bash
+# Buenos ejemplos
+git checkout -b feature/login-usuario
+git checkout -b fix/bug-calculo-impuestos
+git checkout -b docs/readme-instalacion
+
+# Malos ejemplos
+git checkout -b mi-rama
+git checkout -b cambios
+git checkout -b test
+```
+
+### Commits claros y específicos
+
+```bash
+# Buenos commits
+git commit -m "Añadir validación de email en formulario de registro"
+git commit -m "Corregir error de división por cero en cálculo de promedio"
+git commit -m "Actualizar documentación de la API de usuarios"
+
+# Malos commits
+git commit -m "cambios"
+git commit -m "fix"
+git commit -m "funciona"
+```
+
+### Usar .gitignore
+
+Crea un archivo `.gitignore` en la raíz de tu proyecto para ignorar archivos innecesarios:
+
+```
+# Archivos de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de IDE
+.vscode/
+.idea/
+
+# Archivos de configuración local
+config.local.py
+.env
+```
+
+### Revisar antes de subir
+
+```bash
+# Ver qué archivos han cambiado
+git status
+
+# Ver los cambios específicos
+git diff
+
+# Ver el historial de commits
+git log --oneline
+```
+
+### No trabajar directamente en main
+
+Siempre crea una rama para tus cambios:
+
+```bash
+# NUNCA hagas esto
+git checkout main
+# editar archivos
+git add .
+git commit -m "cambios directos en main"
+
+# SIEMPRE haz esto
+git checkout -b feature/mi-nueva-funcionalidad
+# editar archivos
+git add .
+git commit -m "descripción clara del cambio"
+```
+
+## 6. Resolución de conflictos
+
+### ¿Qué es un conflicto?
+
+Un conflicto ocurre cuando dos personas modifican las mismas líneas de código y Git no puede decidir automáticamente qué cambio mantener.
+
+### Cómo detectar un conflicto
+
+```bash
+git pull origin main
+# Si hay conflictos, verás algo como:
+# CONFLICT (content): Merge conflict in archivo.py
+```
+
+### Resolución paso a paso con VS Code
+
+1. **Identifica los archivos en conflicto**:
+```bash
+git status
+```
+
+2. **Abre el archivo en VS Code**:
+   - Verás marcadores como estos:
+```python
+def calcular_promedio(numeros):
+<<<<<<< HEAD
+    return sum(numeros) / len(numeros)
+=======
+    if len(numeros) == 0:
+        return 0
+    return sum(numeros) / len(numeros)
+>>>>>>> feature/validacion-division
+```
+
+3. **Decide qué código mantener**:
+   - `<<<<<<< HEAD`: tu código actual
+   - `=======`: separador
+   - `>>>>>>> rama`: código de la otra rama
+
+4. **Edita el archivo** eliminando los marcadores y manteniendo el código correcto:
+```python
+def calcular_promedio(numeros):
+    if len(numeros) == 0:
+        return 0
+    return sum(numeros) / len(numeros)
+```
+
+5. **Marca el conflicto como resuelto**:
+```bash
+git add archivo.py
+git commit -m "Resolver conflicto en función calcular_promedio"
+```
+
+## 7. Herramientas de GitHub
+
+### Issues
+
+Los Issues son como "tickets" de trabajo. Se usan para:
+- Reportar bugs
+- Solicitar nuevas funcionalidades
+- Hacer preguntas
+- Asignar tareas
+
+**Cómo crear un Issue**:
+1. Ve a tu repositorio en GitHub
+2. Haz clic en "Issues"
+3. Haz clic en "New issue"
+4. Escribe un título descriptivo y una descripción detallada
+
+### Pull Requests
+
+Un Pull Request (PR) es una solicitud para fusionar cambios de una rama a otra.
+
+**Proceso**:
+1. Haz tus cambios en una rama
+2. Sube la rama a GitHub
+3. Crea el Pull Request
+4. Otros revisan tu código
+5. Se hace merge si todo está bien
+
+### GitHub Projects
+
+GitHub Projects es como un tablero Kanban para organizar el trabajo del equipo. Puedes crear columnas como:
+- To Do
+- In Progress
+- In Review
+- Done
+
+### Colaborar en proyectos externos (Fork)
+
+1. **Fork el repositorio**:
+   - Haz clic en "Fork" en GitHub
+   - Esto crea una copia en tu cuenta
+
+2. **Clone tu fork**:
+```bash
+git clone https://github.com/tu-usuario/proyecto-forkeado.git
+```
+
+3. **Configura el upstream**:
+```bash
+git remote add upstream https://github.com/usuario-original/proyecto.git
+```
+
+4. **Mantén tu fork actualizado**:
+```bash
+git fetch upstream
+git checkout main
+git merge upstream/main
+```
+
+## 8. Automatización básica
+
+### GitHub Actions
+
+GitHub Actions permite automatizar tareas como:
+- Ejecutar tests cuando subes código
+- Verificar el estilo de código
+- Desplegar aplicaciones automáticamente
+
+**Ejemplo básico** (archivo `.github/workflows/tests.yml`):
+
+```yaml
+name: Tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+    - name: Run tests
+      run: python -m pytest
+```
+
+## 9. Ejemplos reales en Python
+
+### Versionando un archivo Python
+
+Supongamos que tienes este archivo `calculadora.py`:
+
+```python
+def sumar(a, b):
+    return a + b
+
+def restar(a, b):
+    return a - b
+```
+
+**Proceso de versionado**:
+
+```bash
+# Inicializar repositorio
+git init
+
+# Agregar archivo
+git add calculadora.py
+git commit -m "Añadir funciones básicas de suma y resta"
+
+# Hacer cambios
+# Agregar función multiplicar
+git add calculadora.py
+git commit -m "Añadir función multiplicar"
+
+# Ver historial
+git log --oneline
+```
+
+### Colaboración en utils.py
+
+Imagina que tienes un archivo `utils.py` compartido:
+
+```python
+# utils.py
+def validar_email(email):
+    return "@" in email
+
+def formatear_nombre(nombre):
+    return nombre.strip().title()
+```
+
+**Flujo colaborativo**:
+
+1. **Programador A** trabaja en validación:
+```bash
+git checkout -b feature/mejorar-validacion-email
+# Edita la función validar_email
+git add utils.py
+git commit -m "Mejorar validación de email con regex"
+git push origin feature/mejorar-validacion-email
+```
+
+2. **Programador B** trabaja en formateo:
+```bash
+git checkout -b feature/formateo-avanzado-nombre
+# Edita la función formatear_nombre
+git add utils.py
+git commit -m "Añadir manejo de caracteres especiales en nombres"
+git push origin feature/formateo-avanzado-nombre
+```
+
+3. **Ambos crean Pull Requests** y se revisan mutuamente
+
+### Agregando cambios incrementales
+
+```bash
+# Agregar solo archivos específicos
+git add mi_modulo.py
+
+# Agregar por partes (útil para commits granulares)
+git add -p archivo.py
+
+# Ver diferencias antes de commit
+git diff --cached
+
+# Commit con mensaje descriptivo
+git commit -m "Añadir función de validación de contraseña segura"
+```
+
+## 10. Recursos adicionales
+
+### Documentación oficial
+- [Git Documentation](https://git-scm.com/doc)
+- [GitHub Docs](https://docs.github.com/)
+
+### Tutoriales recomendados
+- [Git Handbook](https://guides.github.com/introduction/git-handbook/)
+- [Learn Git Branching](https://learngitbranching.js.org/) (interactivo)
+- [GitHub Skills](https://skills.github.com/) (cursos gratuitos)
+
+### Herramientas útiles
+- **GitKraken**: Cliente visual de Git
+- **GitHub Desktop**: Cliente oficial de GitHub
+- **VS Code Git Integration**: Extensiones de Git para VS Code
+
 ---
 
-## ❌ ¡No modificar la rama `main`!
+## Cheatsheet de comandos
 
-Trabaja **solo en tu propia rama**.
-No intentes subir nada a `main`. Esa rama es del profesor.
+### Comandos básicos
+```bash
+git init                    # Inicializar repositorio
+git clone <url>            # Clonar repositorio
+git status                 # Ver estado de archivos
+git add <archivo>          # Agregar archivo al staging
+git add .                  # Agregar todos los archivos
+git commit -m "mensaje"    # Hacer commit
+git push                   # Subir cambios
+git pull                   # Bajar cambios
+```
 
----
+### Comandos de ramas
+```bash
+git branch                 # Listar ramas
+git branch <nombre>        # Crear rama
+git checkout <rama>        # Cambiar a rama
+git checkout -b <rama>     # Crear y cambiar a rama
+git merge <rama>           # Fusionar rama
+git branch -d <rama>       # Eliminar rama
+```
 
-## 📬 ¿Dudas?
+### Comandos de información
+```bash
+git log                    # Ver historial
+git log --oneline          # Ver historial resumido
+git diff                   # Ver cambios no staged
+git diff --cached          # Ver cambios staged
+git show                   # Ver último commit
+```
 
-Consulta directamente al profesor.
-La pauta de evaluación ya fue enviada por correo y está en el ambiente de aprendizaje.
+### Comandos de remoto
+```bash
+git remote -v              # Ver repositorios remotos
+git remote add origin <url> # Agregar repositorio remoto
+git push -u origin main    # Subir y configurar upstream
+git fetch                  # Bajar cambios sin merge
+git pull origin main       # Bajar y fusionar cambios
+```
 
----
-
-## ✅ Checklist rápida
-
-* [ ] Leí ambas instrucciones (`Instrucciones_ejercicio_n1.md` y `n2.md`)
-* [ ] Cloné el repositorio correctamente
-* [ ] Creé mi propia rama con mi nombre
-* [ ] Resolví el `ejercicio1.py`
-* [ ] Resolví el `ejercicio2.py`
-* [ ] Subí los dos archivos en mi rama
-* [ ] No toqué la rama `main`
-
-
-
----
-
-## Evaluación: Puntajes y Escala de Notas
-
-### Puntaje por indicador
-
-| Indicador | Descripción breve           | Ponderación | 100% | 80%  | 60%  | 30%  | 0   |
-| --------- | -------------------------- | ----------- | ---- | ---- | ---- | ---- | --- |
-| IE 2.1.1  | Inicializa variables        | 5%          | 5.0  | 4.0  | 3.0  | 1.5  | 0   |
-| IE 2.1.2  | Actualiza variables         | 10%         | 10.0 | 8.0  | 6.0  | 3.0  | 0   |
-| IE 2.1.3  | Entrada/salida              | 15%         | 15.0 | 12.0 | 9.0  | 4.5  | 0   |
-| IE 2.2.1  | Operaciones aritméticas     | 15%         | 15.0 | 12.0 | 9.0  | 4.5  | 0   |
-| IE 2.2.2  | Manipula strings/lógicas    | 15%         | 15.0 | 12.0 | 9.0  | 4.5  | 0   |
-| IE 2.3.1  | Sintaxis condicionales      | 15%         | 15.0 | 12.0 | 9.0  | 4.5  | 0   |
-| IE 2.3.2  | Lógica condicionales        | 25%         | 25.0 | 20.0 | 15.0 | 7.5  | 0   |
-
-🔢 **Puntaje total máximo:** 100 puntos  
-📉 **Puntaje mínimo para aprobar (60%):** 60 puntos  
-
----
-
-### Escala de notas al 60% de exigencia
-
-| Puntaje (%) | Nota | Desempeño                             |
-| ----------- | ---- | ----------------------------------- |
-| 0           | 1.0  | Desempeño no logrado       |
-| 30          | 2.5  | Desempeño incipiente                 |
-| 45          | 3.5  | Desempeño insuficiente               |
-| 59          | 3.9  | Casi aprueba                        |
-| 60          | 4.0  | Desempeño aceptable (mínimo aprobado) |
-| 70          | 4.75 | Buen desempeño                      |
-| 80          | 5.5  | Alto desempeño                     |
-| 90          | 6.25 | Muy buen desempeño                  |
-| 100         | 7.0  | Desempeño destacado (perfecto)     |
-
----
-
-### Nota mínima para aprobar: 4.0 (equivale a 60% o 60 puntos)
-
----
-
-### Cómo calcular tu nota desde el puntaje (%)
-
-Se usa la siguiente fórmula lineal para transformar el puntaje en nota:
-
-```excel
-=SI(Puntaje<60, 1 + (Puntaje/60)*3, 4 + ((Puntaje-60)/40)*3)
-````
-
-* `Puntaje` es el porcentaje total obtenido, de 0 a 100.
-* Resultados menores a 60% son notas de reprobación (<4.0).
-* La nota máxima es 7.0 para 100%.
-
----
-
-**Resumen:**
-
-* Para aprobar necesitas al menos 60 puntos (60%).
-* El puntaje total es la suma ponderada de cada indicador evaluado.
-* La nota final se calcula con la fórmula anterior y se asocia al desempeño descrito en la tabla.
-
+### Comandos de emergencia
+```bash
+git reset --hard HEAD      # Descartar todos los cambios
+git checkout -- <archivo>  # Descartar cambios de archivo
+git reset HEAD <archivo>   # Quitar archivo del staging
+git revert <commit>        # Revertir commit específico
+```
