@@ -6,11 +6,11 @@ def ingresar_juego(juego_recibido):
     return
 
 def buscar_juego(juego_a_buscar):
-    for juegos in lista_de_juegos:
-        if juego_a_buscar == juegos:
-            print("El juego existe")
-            break
-        else:
+     for juegos in lista_de_juegos:
+         if juego_a_buscar == juegos:
+             print("El juego existe")
+             break
+         else:
             print("Juego no existe")
             break
 
