@@ -15,18 +15,21 @@ def menu():
         }
         for clave, opcion in opciones.items():
             print(f"{clave}. {opcion}")
-        eleccion = input("¿Que desea hacer el dia de hoy?: ")
-        if eleccion == "1":
-            ingresar_usuario()
-        elif eleccion == "2":
-            buscar_usuario()
-        elif eleccion == "3":
-            eliminar_usuario()
-        elif eleccion == "4":
-            print("Hasta luego")
-            break
-        else:
-            print("Esa opcion no existe, por favor intente de nuevo")
+        try:
+            eleccion = input("¿Que desea hacer el dia de hoy?: ")
+            if eleccion == "1":
+                ingresar_usuario()
+            elif eleccion == "2":
+                buscar_usuario()
+            elif eleccion == "3":
+                eliminar_usuario()
+            elif eleccion == "4":
+                print("Hasta luego")
+                break
+            else:
+                print("Esa opcion no existe, por favor intente de nuevo")
+        except Exception as e:
+            print(f"ocurrio un error: {e}")
 
 def verificar_contraseña():
     while True:
@@ -46,7 +49,7 @@ def verificar_contraseña():
         if verificacion1:
             print("La contraseña debe tener al menos 8 caracteres")
         if verificacion2:
-            print("La contraseña debe ser alfanumerica")
+            print("La contraseña debe ser alfanumerica y no contener espacios")
         if verificacion3:
             print("La contraseña debe contener al menos una letra")
         if verificacion4:
@@ -85,6 +88,8 @@ def ingresar_usuario():
 
 
 def buscar_usuario():
+    contador_error = 0 #puse este contador porque en el ejemplo al momento de equivocarce regresaba al menu pero eso me parece poco amigable y molesto
+                    #pero si no ponia el break se quedaba en un bucle infinito hasta que ingresara un dato correctamente 
     while True:
         nombre = input("ingrese el nombre del usuario a buscar: ")
         if nombre in usuarios:
@@ -95,9 +100,16 @@ def buscar_usuario():
             break
         else:
             print("Usuario no encontrado, por favor intente de nuevo")
-            continue
+            contador_error = contador_error + 1
+            if contador_error < 3:
+                continue
+            else:
+                print("muchos intentos fallidos")
+                input("Presione Enter para continuar...")
+                break
 
 def eliminar_usuario():
+    contador_error = 0 
     while True:
         nombre = input("ingrese el nombre del ususario a elminar: ")
         if nombre in usuarios:
@@ -107,6 +119,10 @@ def eliminar_usuario():
             break
         else:
             print("usuario no encontrado, por favor intente de nuevo")
-            continue
-
+            contador_error = contador_error +1
+            if contador_error < 3:
+                continue
+            else:
+                print("muchos intentos fallidos")
+                input("Presione Enter para continuar...")
 menu()
