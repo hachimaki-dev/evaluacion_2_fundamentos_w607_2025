@@ -1,82 +1,87 @@
 usuarios = {}
 
-def validar_constraseña(contraseña):
-    return len(contraseña) >=8 and""not in contraseña and any(l.ishalpha() for l in contraseña) and any(n.isdigit for n in contraseña)
+def validar_contraseña(contraseña):
+    return (
+        len(contraseña) >= 8 and
+        " " not in contraseña and
+        any(l.isalpha() for l in contraseña) and
+        any(n.isdigit() for n in contraseña)
+    )
 
-
-def ingresar_usuario():
+def ingresar_usuario(nombre, sexo):
     try:
+        if nombre in usuarios:
+            print("Nombre existente.")
+            return
+        if sexo not in ("M", "F"):
+            print("Sexo inválido.")
+            return
+
+       
         while True:
-            nombre = input("Ingrese su nombre").strip()
-            if nombre in usuarios:
-                print("nombre existente")
-                continue
-            
-            sexo = input("Ingrese su sexo (M/F)").strip().upper()
-            if sexo not in ("M","F"):
-                print("sexo invalido")
-
-
-            while True:
-                contraseña = input("Ingrese su contraseña").strip()
-                if validar_constraseña(contraseña):
-                    break
-                print("Contraseña invalida ingrese una que tenga 8 caracteres y que contenga 1 latra y un numero")
-
-                contraseña[usuarios] = {"contraseña":contraseña,"sexo":sexo,}
-                print("usuario añadido con exito")
+            contraseña = input("Ingrese su contraseña: ").strip()
+            if validar_contraseña(contraseña):
                 break
-    except ValueError:
-        print("")
-     
+            print("Contraseña inválida. Debe tener al menos 8 caracteres, una letra, un número y sin espacios.")
 
-      
+        usuarios[nombre] = {"sexo": sexo, "contraseña": contraseña}
+        print("Usuario añadido con éxito.")
+    except:
+        print("Error al ingresar usuario.")
 
+def buscar_usuario(nombre):
+    try:
+        if nombre in usuarios:
+            datos = usuarios[nombre]
+            print(f"Usuario encontrado - Sexo: {datos['sexo']}, Contraseña: {datos['contraseña']}")
+        else:
+            print("Usuario no encontrado.")
+    except:
+        print("Error al buscar usuario.")
 
-def buscar_usuario(u):
-    nombre = input("Ingrese el nombre a buscar").strip()
-    if usuarios in nombre:
+def eliminar_usuario(nombre):
+    try:
+        if nombre in usuarios:
+            del usuarios[nombre]
+            print("Usuario eliminado con éxito.")
+        else:
+            print("Usuario no encontrado.")
+    except:
+        print("Error al eliminar usuario.")
 
-   
-    print("usuario ingresado con exito")
-        break
-
-
-
-def eliminar_usuario():
-    nombre = input("Ingrese el nombre a eliminar").strip()
-    if nombre in usuarios:
-        del usuarios[nombre]
-        print("")
-
-
-
-def menu(usuario):
+def menu():
     while True:
-            print("***Menu***")
-            opcion = input("Ingrese una opcion del 1 al 4")
+        try:
+            print("\n*** Menú ***")
+            print("1. Ingresar usuario")
+            print("2. Buscar usuario")
+            print("3. Eliminar usuario")
+            print("4. Salir")
+            opcion = input("Opción: ").strip()
+
             if opcion == "1":
-                ingresar_usuario(usuario)
-            elif opcion =="2":
-                buscar_usuario(usuario)
-            elif opcion =="3":
-                eliminar_usuario(usuario)
-            elif opcion =="4":
-                print("Saliste del programa")
+                nombre = input("Ingrese su nombre: ").strip()
+                sexo = input("Ingrese su sexo (M/F): ").strip().upper()
+                ingresar_usuario(nombre, sexo)
+
+            elif opcion == "2":
+                nombre = input("Ingrese el nombre a buscar: ").strip()
+                buscar_usuario(nombre)
+
+            elif opcion == "3":
+                nombre = input("Ingrese el nombre a eliminar: ").strip()
+                eliminar_usuario(nombre)
+
+            elif opcion == "4":
+                print("Saliste del programa.")
+                break
+
             else:
-                print("Elija una opcion valida")
-        
-                
+                print("Opción inválida.")
+        except:
+            print("Error en el menú.")
 
-
-    
-
-
-    
-
-        
-    
-
+menu()
 
         
              
