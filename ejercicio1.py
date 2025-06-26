@@ -35,14 +35,15 @@ def validar_contraseña():
     while True:
         contraseña = input("Ingrese contraseña: ")
         if len(contraseña) < 8:
-            print("Contraseña no válida. Intente otra.")
-        elif not any(c.isalpha for c in contraseña):
-            print("Contraseña no válida. Intente otra.")
-        elif not any(c.isdigit for c in contraseña):
-            print("Contraseña no válida. Intente otra.")
+            print("Error: Debe tener al menos 8 caracteres. Intente otra.")
+        elif not any(c.isalpha() for c in contraseña):
+            print("Error: Debe tener al menos 1 letra. Intente otra.")
+        elif not any(c.isdigit() for c in contraseña):
+            print("Error: Debe tener al menos 1 numero. Intente otra.")
         elif " " in contraseña:
-            print("Contraseña no válida. Intente otra.")
+            print("Error: No puede tener espacios en blanco. Intente otra.")
         else:
+            print("Contraseña válida.")
             return contraseña
 
 def ingresar_usuario():
