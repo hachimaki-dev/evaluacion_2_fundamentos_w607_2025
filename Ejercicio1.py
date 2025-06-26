@@ -35,14 +35,18 @@ def validar_sexo(sexo_del_usuario):
 def ingresar_usuario():
     global usuarios
     while True:
-        print(" ")
-        nombre_usuario = input("Ingrese el nombre de usuario: ")
-        if nombre_usuario in usuarios:
-            print("⋮══════════════════════════════════════════════════════════════════════════⋮")
-            print("⋮          El usuario ya existe. Ingrese un nombre diferente.              ⋮")
-            print("⋮══════════════════════════════════════════════════════════════════════════⋮")
-        else:
-            break
+        try:
+            print(" ")
+            nombre_usuario = input("Ingrese el nombre de usuario: ")
+            if nombre_usuario in usuarios:
+                print("⋮══════════════════════════════════════════════════════════════════════════⋮")
+                print("⋮          El usuario ya existe. Ingrese un nombre diferente.              ⋮")
+                print("⋮══════════════════════════════════════════════════════════════════════════⋮")
+            else:
+                break
+        except:
+            print("Error inesperado al ingresar el nombre de usuario.")
+            return
     print(" ")
     sexo_del_usuario = input("Ingrese el sexo ( M / F ): ")
     print(" ")
@@ -99,23 +103,27 @@ def eliminar_usuario():
 def opciones_del_menu():
     while True:
         mostrar_el_menu()
-        elegir_opcion = input("Ingrese una opción (1-4): ")
-        if elegir_opcion == "1":
-            ingresar_usuario()
-        elif elegir_opcion == "2":
-            buscar_usuario()
-        elif elegir_opcion == "3":
-            eliminar_usuario()
-        elif elegir_opcion == "4":
-            print("⋮═══════════════════════════════════════════════════════════════════════════════════════⋮")
-            print("⋮                                 Saliendo del programa.                                ⋮")
-            print("⋮═══════════════════════════════════════════════════════════════════════════════════════⋮")
-            break
-        else:
-            print("⋮═══════════════════════════════════════════════════════════════════════════════════════⋮")
-            print("⋮         Opción inválida. Por favor, ingrese una opción válida (1-4).                  ⋮")
-            print("⋮═══════════════════════════════════════════════════════════════════════════════════════⋮")
-
+        try:
+            elegir_opcion = input("Ingrese una opción (1-4): ")
+            if elegir_opcion == "1":
+                ingresar_usuario()
+            elif elegir_opcion == "2":
+                buscar_usuario()
+            elif elegir_opcion == "3":
+                eliminar_usuario()
+            elif elegir_opcion == "4":
+                print("⋮═══════════════════════════════════════════════════════════════════════════════════════⋮")
+                print("⋮                                 Saliendo del programa.                                ⋮")
+                print("⋮═══════════════════════════════════════════════════════════════════════════════════════⋮")
+                break
+            else:
+                print("⋮═══════════════════════════════════════════════════════════════════════════════════════⋮")
+                print("⋮         Opción inválida. Por favor, ingrese una opción válida (1-4).                  ⋮")
+                print("⋮═══════════════════════════════════════════════════════════════════════════════════════⋮")
+        except:
+                print("Error inesperado al procesar la opción. Por favor, intente nuevamente.")
+           
+            
 def main():
     opciones_del_menu()
 
