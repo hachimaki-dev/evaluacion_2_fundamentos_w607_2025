@@ -1,66 +1,63 @@
 lista_usuario = []
-def Ingresar_usuario(usuario,nombre,sexo,contraseña):
+
+def ingresar_usuario(usuario,nombre,sexo,contraseña):
     lista_usuario.append(usuario)
-    nombre = {
-        "sexo": "M","F"
-        "contraseña":"contraseña"
 
-    }
-nombre = input("Ingrese su nombre")
-sexo = input("Ingrese su nombre")
-Contraseña = input("Ingrese su contraseña")
+    nombre = input("Ingrese nombre de usuario:")
+    sexo = input("Ingrese sexo:")
+    contraseña = input("Ingrese contraseña:")
 
+    usuarios= {
+        "sexo": "M" or "F",
+        "contraseña": "contraseña_del_usuario"
+        }
 
-   
-    
-    
+def validar_sexo():
+    print("")
 
-def Buscar_usuario(buscar):
-    for in lista_usuario(buscar):
+def validar_contraseña(contraseña):
+    if len(contraseña) >= 8:
+        return
+    else:
+        print("Contraseña Muy Corta")
+
+def buscar_usuario(buscar):
+    for i in lista_usuario(buscar): 
        return
        
-    
-
-def Eliminar_usuario(eliminar):
+def eliminar_usuario(eliminar):
     lista_usuario in eliminar
     lista_usuario.remove(eliminar)
     return
 
-  
-def menu(opcion,usuario):
-   print("1.Ingresar usuario")
-   print("2.Buscar usuario")
-   print("3.Elimnar usuario")
-   print("4.Salir")
+def mostrar_menu(opcion,usuario):
+    print("1.Ingresar usuario")
+    print("2.Buscar usuario")
+    print("3.Elimnar usuario")
+    print("4.Salir")
 
-    opcion == input("Ingrese una opcion")
-   
-   if opcion == "1":
-    (Ingresar_usuario)(usuario)
-
-    if opcion == "2":
-       Buscar_usuario(usuario)
-
-    if opcion == "3":
-        (Eliminar_usuario)(usuario)
-
-    if opcion == "4":
-       print("Saliste del programa")
-    else:
-       print("Elija una opcion valida")
+    while True:
+        opcion = input("Ingrese una opcion:")
     
-                                                            
-       
+        try:
+            if opcion == "1":
+                ingresar_usuario(usuario)
+
+            elif opcion == "2":
+                buscar_usuario(usuario)
+
+            elif opcion == "3":
+                eliminar_usuario(usuario)
+
+            elif opcion == "4":
+                print("Saliste del programa")
+                break
+            else:
+                print("Debe ingresar una opción válida!")
+        except ValueError:
+            print("Caracteres Invalidos.")
+
+mostrar_menu("","")
 
 
 
-    
-
-
-
-    
-
-
-
-
-Ingresar_usuario("oa")
