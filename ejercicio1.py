@@ -2,7 +2,9 @@ usuarios = []
 
 
 def mostrar_menu():
+    # Menú con ciclo que maneja errores en el ingreso de opciones
     while True:
+
         print("MENU PRINCIPAL")
         print("1.- Ingresar usuario")
         print("2.- Buscar usuario")
@@ -14,24 +16,29 @@ def mostrar_menu():
 
             if n == 1:
                 ingresar_usuario()
+
             elif n == 2:
                 buscar_usuario()
+
             elif n == 3:
                 eliminar_usuario()
+
             elif n == 4:
                 print("Fin del programa.")
                 break
             else:
-                print("Ingrese una opción entre 1 y 4.")
+                print("Ingrese una opción entre 1 y 4.\n")
 
         except ValueError:
-            print("Ingrese un valor válido.")
+            print("Ingrese un valor válido.\n")
 
 
 def ingresar_usuario():
+    print("\n-- Ingresar Usuario --")
+
     while True:
         nombre = input("Ingrese su nombre de usuario: ")
-
+        # Se confima que el nombre no esté repetido a través de la función
         valido = validar_usuario(nombre)
 
         if valido:
@@ -39,7 +46,7 @@ def ingresar_usuario():
 
     while True:
         sexo = input("Ingrese su sexo (M o F): ").upper()
-
+        # Se confirma el valor del sexo aceptando valores en minúscula
         sexo_valido = validar_sexo(sexo)
 
         if sexo_valido:
@@ -55,13 +62,14 @@ def ingresar_usuario():
 
     persona = {"nombre": nombre, "sexo": sexo, "contraseña": contraseña}
     usuarios.append(persona)
-    print("Usuario creado correctamente.")
+    print("Usuario creado correctamente.\n")
 
 
 def validar_usuario(nombre):
 
     for persona in usuarios:
-        if nombre == persona:
+        # Ocupa la función lower para comparar correctamente
+        if nombre.lower() == persona["nombre"].lower():
             print("El usuario está repetido.")
             return False
 
@@ -104,6 +112,7 @@ def validar_contraseña(contraseña):
 
 
 def buscar_usuario():
+    print("\n-- Buscar Usuario --")
 
     buscar = input("Ingrese el usuario que busca: ")
 
@@ -111,27 +120,30 @@ def buscar_usuario():
         if buscar.lower() == persona["nombre"].lower():
             print(f"El usuario {persona["nombre"]} existe.")
             print(f"Sexo: {persona["sexo"]}")
-            print(f"Contraseña: {persona["contraseña"]}")
+            print(f"Contraseña: {persona["contraseña"]}\n")
             return
 
-    print("El usuario que buscas no existe.")
+    print("El usuario que buscas no existe.\n")
 
 
 def eliminar_usuario():
+    print("\n-- Eliminar Usuario --")
 
     eliminar = input("Ingrese el usuario que desea eliminar: ")
 
+    # Enumerate para evitar errores borrando en el mismo ciclo
     for i, persona in enumerate(usuarios):
         if eliminar.lower() == persona["nombre"].lower():
-            print(f"El usuario {persona["nombre"]} ha sido eliminado.")
+            print(f"El usuario {persona["nombre"]} ha sido eliminado.\n")
             del usuarios[i]
+            # Elimina usando el índice obtenido
             return
 
-    print("El usuario que buscas no existe. ")
+    print("El usuario que buscas no existe.\n")
 
-
+# Se ejecuta todo el código a través de la función que muestra el menú
 mostrar_menu()
 
-#git add .
-#git commit -m "Avances clase miercoles 25"
+# git add .
+# git commit -m "Avances clase miercoles 25"
 # git push origin evaluacion4/paz_oyarzun
