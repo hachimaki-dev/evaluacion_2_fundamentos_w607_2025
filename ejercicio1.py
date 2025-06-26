@@ -1,22 +1,48 @@
 menu = True
 lista_usuarios = []
-def ingresar_nombre():
-    nombre = input("Ingrese el nombre de usuario: ")
-    for usuarios in lista_usuarios:
-        if usuarios in lista_usuarios:
-            print("No puede ingresar un usuario que ya existe: ")
+def validar_nombre():
+    while True:
+        nombre = input("Ingrese el nombre de usuario: ")
+        existe = False
+        for usuarios in lista_usuarios:
+            if nombre in usuarios:
+                existe = True
+                break
+        if existe:
+            print("El usuario ya existe, intente otro")
         else:
             return nombre
-def ingresar_genero():
-    genero = input("Ingrese el genero de usuario: ")
+def validar_genero():
     while True:
-        if genero != "F" and genero != "M":
-            print('Debe ingresar "F" para femenino o "M" para masculino')
-        else:
+        genero = input('Ingrese el genero del usuario, "F" para femenino y "M" para masculino: ')
+        if genero == "F" or genero == "M":
             return genero
-def ingresar_contraseña():
-    contraseña = input("Ingrese una contraseña: ")
-    return contraseña
+        else:
+            print('Debe ingresar "F" para femenino y "M" para masculino')
+def validar_contraseña():
+    while True:
+        contraseña = input("Ingrese una contraseña: ")
+        letras = False
+        numeros = False
+        espacios = False
+        for c in contraseña:
+            if c in "0123456789":
+                numeros = True
+            if c in "qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNM":
+                letras = True
+            if c in " ":
+                espacios = True
+        if len(contraseña) < 8:
+            print("La contraseña debe tener al menos 8 caracteres")
+        elif not numeros:
+            print("Su contraseña debe contener numeros")
+        elif not letras:
+            print("Su contraseña debe contener letras")
+        elif espacios:
+            print("Su contraseña no debe tener espacios")
+        else:
+            print("Contraseña válida")
+            return contraseña
 def ingresar_usuario(nombre, genero, contraseña):
     usuarios = {
     nombre: {
@@ -25,16 +51,23 @@ def ingresar_usuario(nombre, genero, contraseña):
         }
     }
     lista_usuarios.append(usuarios)
-def buscar_usuario(usuarios):
-    for usuarios in lista_usuarios:
-        if usuarios in lista_usuarios:
+def buscar_usuario():
+    nombre = input("Ingrese el usuario que desea buscar: ")
+    for usuario in lista_usuarios:
+        if nombre in usuario:
             print("El usuario que busca si existe.")
-        else:
-            print("El usuario que busca no existe.")
+            print(f"Su sexo es: {usuario[nombre]["sexo"]}")
+            print(f"Su contraseña es: {usuario[nombre]["contraseña"]}")
+            return
+    print("El usuario que desea buscar no se encuentra en la lista de usuarios")
 def eliminar_usuario():
-    for usuarios in lista_usuarios:
-        if usuarios in lista_usuarios:
-            lista_usuarios.remove(usuarios)
+    nombre = input("Que usuario desea eliminar?: ")
+    for usuario in lista_usuarios:
+        if nombre in usuario:
+            lista_usuarios.remove(usuario)
+            print("Eliminando usuario...")
+            return
+    print("El usuario que quiere eliminar no existe")
 while menu:
     try:
         print("'''")
@@ -47,7 +80,11 @@ while menu:
         option = int(input("Seleccione una opción: "))
         print("''''")
         if option == 1:
-            ingresar_usuario()
+            nombre = validar_nombre()
+            genero = validar_genero()
+            contraseña = validar_contraseña()
+            ingresar_usuario(nombre, genero, contraseña)
+            print("Usuario ingresado con exito!")
         elif option == 2:
             buscar_usuario()
         elif option == 3:
