@@ -13,10 +13,10 @@ def ingresar_usuario(nombre_usuario , sexo , contraseña_del_usuario):
     for usuario in lista_de_usuarios:
         if nombre_usuario in usuario:
             print("El usuario existe")
-            return
-        else:
-            lista_de_usuarios.append(usuarios)
-            print("Usuario ingresado con exito")
+            
+        
+    lista_de_usuarios.append(usuarios)
+    print("Usuario ingresado con exito")
         
             
     
@@ -80,8 +80,8 @@ while True:
             print("El nombre no debe repetirse")
             nombre_usuario = input("Ingrese su usuario:\n")
             while True:
-                sexo = input("Ingrese sexo(M para masculino y F para femenino)\n")
-                if validar_sexo(sexo.upper()):
+                sexo = input("Ingrese sexo(M O F)\n")
+                if validar_sexo(sexo):
                     break
                 else:
                     print("Debe ser M para masculino y F para femenino")
