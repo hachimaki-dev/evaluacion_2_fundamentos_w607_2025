@@ -1,41 +1,28 @@
-users = []
+lista = []
 
-user = ""
-
-passw = int
-
-usuarios = {
-    "nombre_usuario": user {
-        "sexo": "M" or "F",
-        "contraseña": passw
-    }
-}
-
-def ingresar_user():
+def ingresar_user(nombre, sx, passw):
     print("Opción elegida: Ingresar usuario.")
-    user = str(input("Ingrese nombre de usuario: "))
-    for i in users:
-        if user == i:
-            print(f"El usuario {user} existe, Ingrese de nuevo a la opción del menú para intentar nuevamente.")
-        else:
-            print("No existe.")
-    users.append(user)
-
+    nombre = str(input("Ingrese nombre de usuario: "))
+    sx  = str(input("Ingrese sexo del usuario (M/F): "))
+    passw = str(input("Ingrese contraseñaS1: "))
+    lista.append(nombre, sx, passw)
+ 
+        
 def eliminar_user(user):
     print("Opción elegida: Eliminar usuario.")
-    users.remove(user)
-    return users
+    lista.remove(user)
+    return lista
 
 def buscar_user():
     print("Opción elegida: Buscar usuario.")
     user = input("Ingrese el nombre del usuario a buscar: ")
-    for i in users:
+    for i in lista:
         if user == i:
             print(f"El usuario {user} existe.")
             break
         else:
             print("No existe.")
-    return
+            return False
 
 
 while True:
@@ -48,7 +35,7 @@ while True:
     try:
         numopc = int(input("Ingrese una opción para ingresar al menú (1-4): "))
         if numopc == 1:
-            ingresar_user()
+            ingresar_user(nombre, sx, passw)
         elif numopc == 2:
             buscar_user()
         elif numopc == 3:
