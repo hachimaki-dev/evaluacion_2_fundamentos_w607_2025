@@ -1,554 +1,285 @@
-# Guía rapida de Git y GitHub
-
-## 1. Introducción
-
-### ¿Qué es Git?
-Git es un sistema de control de versiones que te permite rastrear los cambios en tus archivos de código a lo largo del tiempo. Piensa en Git como un "historial detallado" de tu proyecto que te permite:
-- Ver qué cambios hiciste y cuándo
-- Volver a versiones anteriores si algo sale mal
-- Trabajar en paralelo con otros programadores sin interferir
-
-### ¿Qué es GitHub?
-GitHub es una plataforma en línea que usa Git para almacenar y compartir proyectos de código. Es como "Google Drive para programadores", pero mucho más poderoso.
-
-**Analogía simple**: Si Git es tu "cuaderno de apuntes" local, GitHub es la "biblioteca" donde guardas y compartes tus cuadernos con otros estudiantes.
-
-### ¿Por qué es esencial en equipos?
-- **Colaboración**: Varios programadores pueden trabajar en el mismo proyecto sin pisarse
-- **Respaldo**: Tu código está seguro en la nube
-- **Historial**: Puedes ver quién cambió qué y cuándo
-- **Reversión**: Si algo se rompe, puedes volver a una versión que funcionaba
-
-## 2. Configuración inicial
-
-### Instalar Git en Windows
-
-1. Ve a [https://git-scm.com/download/win](https://git-scm.com/download/win)
-2. Descarga la versión más reciente
-3. Ejecuta el instalador con las opciones por defecto
-4. Verifica la instalación abriendo la terminal de Windows y ejecutando:
-
-```bash
-git --version
-```
-
-### Configuración básica
-
-Configura tu identidad (solo necesitas hacerlo una vez):
-
-```bash
-git config --global user.name "Tu Nombre"
-git config --global user.email "tu-email@ejemplo.com"
-```
-
-Verifica la configuración:
-
-```bash
-git config --list
-```
-
-### Conectar con GitHub
-
-#### Opción 1: HTTPS (Recomendado para principiantes)
-1. Crea una cuenta en [GitHub.com](https://github.com)
-2. Cuando hagas push por primera vez, te pedirá usuario y contraseña
-3. Desde 2021, necesitas usar un "Personal Access Token" en lugar de tu contraseña:
-   - Ve a GitHub → Settings → Developer settings → Personal access tokens
-   - Genera un nuevo token con permisos de "repo"
-   - Guarda el token en un lugar seguro
-
-#### Opción 2: SSH (Más avanzado)
-1. Genera una clave SSH:
-```bash
-ssh-keygen -t ed25519 -C "tu-email@ejemplo.com"
-```
-2. Presiona Enter para aceptar la ubicación por defecto
-3. Copia la clave pública:
-```bash
-cat ~/.ssh/id_ed25519.pub
-```
-4. Ve a GitHub → Settings → SSH and GPG keys → New SSH key
-5. Pega la clave y guarda
-
-## 3. Crear un repositorio
-
-### Crear un repositorio local
-
-Navega a tu carpeta de proyecto y ejecuta:
-
-```bash
-cd mi-proyecto-python
-git init
-```
-
-Esto crea un repositorio Git vacío en tu carpeta.
-
-### Crear un repositorio en GitHub
-
-1. Ve a GitHub.com
-2. Haz clic en el botón "New" (verde)
-3. Nombra tu repositorio
-4. Selecciona "Public" o "Private"
-5. No inicialices con README si ya tienes archivos locales
-6. Haz clic en "Create repository"
-
-### Vincular repositorio local con GitHub
-
-```bash
-git remote add origin https://github.com/tu-usuario/nombre-repo.git
-```
-
-### Hacer el primer push
-
-```bash
-# Agregar todos los archivos
-git add .
-
-# Hacer commit con mensaje descriptivo
-git commit -m "Primer commit: estructura inicial del proyecto"
-
-# Subir al repositorio remoto
-git push -u origin main
-```
-
-## 4. Estructura de trabajo en equipo
-
-### ¿Qué es una rama (branch)?
-
-Una rama es una línea de desarrollo independiente. Imagina que el proyecto principal (`main`) es el tronco de un árbol, y las ramas son las ramas que salen de él. Cada programador puede trabajar en su propia rama sin afectar el código principal.
-
-### Comandos básicos de ramas
-
-```bash
-# Ver todas las ramas
-git branch
-
-# Crear una nueva rama
-git branch nombre-rama
-
-# Cambiar a una rama
-git checkout nombre-rama
-
-# Crear y cambiar a una rama en un solo comando
-git checkout -b nombre-rama
-
-# Eliminar una rama
-git branch -d nombre-rama
-```
-
-### Flujo de trabajo colaborativo
-
-1. **Clonar el repositorio**:
-```bash
-git clone https://github.com/usuario/proyecto.git
-cd proyecto
-```
-
-2. **Crear una rama para tu feature**:
-```bash
-git checkout -b feature/nueva-funcionalidad
-```
-
-3. **Hacer cambios y commits**:
-```bash
-# Editar archivos
-git add archivo-modificado.py
-git commit -m "Añadir función de validación de email"
-```
-
-4. **Subir la rama**:
-```bash
-git push origin feature/nueva-funcionalidad
-```
-
-5. **Crear Pull Request en GitHub**:
-   - Ve a GitHub
-   - Haz clic en "Compare & pull request"
-   - Describe tus cambios
-   - Asigna reviewers si es necesario
-
-6. **Merge después de revisión**:
-   - El líder del equipo o reviewer aprueba
-   - Se hace merge a la rama principal
-   - Se puede eliminar la rama feature
-
-## 5. Buenas prácticas
-
-### Nombres de ramas claros
-
-```bash
-# Buenos ejemplos
-git checkout -b feature/login-usuario
-git checkout -b fix/bug-calculo-impuestos
-git checkout -b docs/readme-instalacion
-
-# Malos ejemplos
-git checkout -b mi-rama
-git checkout -b cambios
-git checkout -b test
-```
-
-### Commits claros y específicos
-
-```bash
-# Buenos commits
-git commit -m "Añadir validación de email en formulario de registro"
-git commit -m "Corregir error de división por cero en cálculo de promedio"
-git commit -m "Actualizar documentación de la API de usuarios"
-
-# Malos commits
-git commit -m "cambios"
-git commit -m "fix"
-git commit -m "funciona"
-```
-
-### Usar .gitignore
-
-Crea un archivo `.gitignore` en la raíz de tu proyecto para ignorar archivos innecesarios:
-
-```
-# Archivos de Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-.venv/
-
-# Archivos de sistema
-.DS_Store
-Thumbs.db
-
-# Archivos de IDE
-.vscode/
-.idea/
-
-# Archivos de configuración local
-config.local.py
-.env
-```
-
-### Revisar antes de subir
-
-```bash
-# Ver qué archivos han cambiado
-git status
-
-# Ver los cambios específicos
-git diff
-
-# Ver el historial de commits
-git log --oneline
-```
-
-### No trabajar directamente en main
-
-Siempre crea una rama para tus cambios:
-
-```bash
-# NUNCA hagas esto
-git checkout main
-# editar archivos
-git add .
-git commit -m "cambios directos en main"
-
-# SIEMPRE haz esto
-git checkout -b feature/mi-nueva-funcionalidad
-# editar archivos
-git add .
-git commit -m "descripción clara del cambio"
-```
-
-## 6. Resolución de conflictos
-
-### ¿Qué es un conflicto?
-
-Un conflicto ocurre cuando dos personas modifican las mismas líneas de código y Git no puede decidir automáticamente qué cambio mantener.
-
-### Cómo detectar un conflicto
-
-```bash
-git pull origin main
-# Si hay conflictos, verás algo como:
-# CONFLICT (content): Merge conflict in archivo.py
-```
-
-### Resolución paso a paso con VS Code
-
-1. **Identifica los archivos en conflicto**:
-```bash
-git status
-```
-
-2. **Abre el archivo en VS Code**:
-   - Verás marcadores como estos:
-```python
-def calcular_promedio(numeros):
-<<<<<<< HEAD
-    return sum(numeros) / len(numeros)
-=======
-    if len(numeros) == 0:
-        return 0
-    return sum(numeros) / len(numeros)
->>>>>>> feature/validacion-division
-```
-
-3. **Decide qué código mantener**:
-   - `<<<<<<< HEAD`: tu código actual
-   - `=======`: separador
-   - `>>>>>>> rama`: código de la otra rama
-
-4. **Edita el archivo** eliminando los marcadores y manteniendo el código correcto:
-```python
-def calcular_promedio(numeros):
-    if len(numeros) == 0:
-        return 0
-    return sum(numeros) / len(numeros)
-```
-
-5. **Marca el conflicto como resuelto**:
-```bash
-git add archivo.py
-git commit -m "Resolver conflicto en función calcular_promedio"
-```
-
-## 7. Herramientas de GitHub
-
-### Issues
-
-Los Issues son como "tickets" de trabajo. Se usan para:
-- Reportar bugs
-- Solicitar nuevas funcionalidades
-- Hacer preguntas
-- Asignar tareas
-
-**Cómo crear un Issue**:
-1. Ve a tu repositorio en GitHub
-2. Haz clic en "Issues"
-3. Haz clic en "New issue"
-4. Escribe un título descriptivo y una descripción detallada
-
-### Pull Requests
-
-Un Pull Request (PR) es una solicitud para fusionar cambios de una rama a otra.
-
-**Proceso**:
-1. Haz tus cambios en una rama
-2. Sube la rama a GitHub
-3. Crea el Pull Request
-4. Otros revisan tu código
-5. Se hace merge si todo está bien
-
-### GitHub Projects
-
-GitHub Projects es como un tablero Kanban para organizar el trabajo del equipo. Puedes crear columnas como:
-- To Do
-- In Progress
-- In Review
-- Done
-
-### Colaborar en proyectos externos (Fork)
-
-1. **Fork el repositorio**:
-   - Haz clic en "Fork" en GitHub
-   - Esto crea una copia en tu cuenta
-
-2. **Clone tu fork**:
-```bash
-git clone https://github.com/tu-usuario/proyecto-forkeado.git
-```
-
-3. **Configura el upstream**:
-```bash
-git remote add upstream https://github.com/usuario-original/proyecto.git
-```
-
-4. **Mantén tu fork actualizado**:
-```bash
-git fetch upstream
-git checkout main
-git merge upstream/main
-```
-
-## 8. Automatización básica
-
-### GitHub Actions
-
-GitHub Actions permite automatizar tareas como:
-- Ejecutar tests cuando subes código
-- Verificar el estilo de código
-- Desplegar aplicaciones automáticamente
-
-**Ejemplo básico** (archivo `.github/workflows/tests.yml`):
-
-```yaml
-name: Tests
-on: [push, pull_request]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
-    - name: Install dependencies
-      run: pip install -r requirements.txt
-    - name: Run tests
-      run: python -m pytest
-```
-
-## 9. Ejemplos reales en Python
-
-### Versionando un archivo Python
-
-Supongamos que tienes este archivo `calculadora.py`:
-
-```python
-def sumar(a, b):
-    return a + b
-
-def restar(a, b):
-    return a - b
-```
-
-**Proceso de versionado**:
-
-```bash
-# Inicializar repositorio
-git init
-
-# Agregar archivo
-git add calculadora.py
-git commit -m "Añadir funciones básicas de suma y resta"
-
-# Hacer cambios
-# Agregar función multiplicar
-git add calculadora.py
-git commit -m "Añadir función multiplicar"
-
-# Ver historial
-git log --oneline
-```
-
-### Colaboración en utils.py
-
-Imagina que tienes un archivo `utils.py` compartido:
-
-```python
-# utils.py
-def validar_email(email):
-    return "@" in email
-
-def formatear_nombre(nombre):
-    return nombre.strip().title()
-```
-
-**Flujo colaborativo**:
-
-1. **Programador A** trabaja en validación:
-```bash
-git checkout -b feature/mejorar-validacion-email
-# Edita la función validar_email
-git add utils.py
-git commit -m "Mejorar validación de email con regex"
-git push origin feature/mejorar-validacion-email
-```
-
-2. **Programador B** trabaja en formateo:
-```bash
-git checkout -b feature/formateo-avanzado-nombre
-# Edita la función formatear_nombre
-git add utils.py
-git commit -m "Añadir manejo de caracteres especiales en nombres"
-git push origin feature/formateo-avanzado-nombre
-```
-
-3. **Ambos crean Pull Requests** y se revisan mutuamente
-
-### Agregando cambios incrementales
-
-```bash
-# Agregar solo archivos específicos
-git add mi_modulo.py
-
-# Agregar por partes (útil para commits granulares)
-git add -p archivo.py
-
-# Ver diferencias antes de commit
-git diff --cached
-
-# Commit con mensaje descriptivo
-git commit -m "Añadir función de validación de contraseña segura"
-```
-
-## 10. Recursos adicionales
-
-### Documentación oficial
-- [Git Documentation](https://git-scm.com/doc)
-- [GitHub Docs](https://docs.github.com/)
-
-### Tutoriales recomendados
-- [Git Handbook](https://guides.github.com/introduction/git-handbook/)
-- [Learn Git Branching](https://learngitbranching.js.org/) (interactivo)
-- [GitHub Skills](https://skills.github.com/) (cursos gratuitos)
-
-### Herramientas útiles
-- **GitKraken**: Cliente visual de Git
-- **GitHub Desktop**: Cliente oficial de GitHub
-- **VS Code Git Integration**: Extensiones de Git para VS Code
+# Evaluación Final Transversal
+## Ejecución Práctica
+
+### Información General
+
+| Campo | Detalle |
+|-------|---------|
+| **Sigla** | FPY1101 |
+| **Asignatura** | Fundamentos de programación |
+| **Tiempo Asignado** | 7 horas |
+| **Ponderación** | 40% |
+| **Tipo de Evaluación** | Ejecución práctica |
 
 ---
 
-## Cheatsheet de comandos
+## Contexto del Problema
 
-### Comandos básicos
-```bash
-git init                    # Inicializar repositorio
-git clone <url>            # Clonar repositorio
-git status                 # Ver estado de archivos
-git add <archivo>          # Agregar archivo al staging
-git add .                  # Agregar todos los archivos
-git commit -m "mensaje"    # Hacer commit
-git push                   # Subir cambios
-git pull                   # Bajar cambios
+El concesionario **AutoUsados** se especializa en la venta de automóviles de segunda mano. Para gestionar su inventario, utilizan un sistema basado en dos diccionarios principales que contienen toda la información de los vehículos disponibles.
+
+### Estructura de Datos
+
+#### Diccionario "vehiculos"
+Este diccionario almacena las características técnicas de cada automóvil, donde:
+- **Clave**: Código único del vehículo (string)
+- **Valor**: Lista con 7 elementos que representan las características del vehículo
+
+| Índice | Campo | Descripción | Ejemplo |
+|--------|-------|-------------|---------|
+| 0 | Marca | Fabricante del vehículo | "Toyota", "Ford", "Chevrolet" |
+| 1 | Año | Año de fabricación | 2018, 2020, 2015 |
+| 2 | Kilometraje | Kilómetros recorridos | "45000km", "120000km" |
+| 3 | Combustible | Tipo de combustible | "Gasolina", "Diesel", "Híbrido" |
+| 4 | Transmisión | Tipo de transmisión | "Manual", "Automática" |
+| 5 | Motor | Especificaciones del motor | "1.6L 4cil", "2.0L V6" |
+| 6 | Color | Color del vehículo | "Blanco", "Negro", "Rojo" |
+
+**Ejemplo del diccionario vehiculos:**
+```python
+vehiculos = {
+    'TOY8475': ['Toyota', 2019, '65000km', 'Gasolina', 'Automática', '1.8L 4cil', 'Blanco'],
+    'FOR2175': ['Ford', 2017, '85000km', 'Gasolina', 'Manual', '1.6L 4cil', 'Azul'],
+    'CHE9834': ['Chevrolet', 2020, '25000km', 'Gasolina', 'Automática', '2.0L 4cil', 'Negro'],
+    'NIS7654': ['Nissan', 2016, '95000km', 'Gasolina', 'Manual', '1.6L 4cil', 'Rojo'],
+    'HYU4521': ['Hyundai', 2021, '15000km', 'Híbrido', 'Automática', '1.6L 4cil', 'Gris'],
+    'KIA3456': ['Kia', 2018, '75000km', 'Diesel', 'Manual', '2.0L 4cil', 'Blanco'],
+    'MAZ8901': ['Mazda', 2019, '55000km', 'Gasolina', 'Automática', '2.5L 4cil', 'Rojo'],
+    'SUB2468': ['Subaru', 2020, '30000km', 'Gasolina', 'Manual', '2.0L 4cil', 'Verde'],
+    # ... más vehículos
+}
 ```
 
-### Comandos de ramas
-```bash
-git branch                 # Listar ramas
-git branch <nombre>        # Crear rama
-git checkout <rama>        # Cambiar a rama
-git checkout -b <rama>     # Crear y cambiar a rama
-git merge <rama>           # Fusionar rama
-git branch -d <rama>       # Eliminar rama
+#### Diccionario "inventario"
+Este diccionario almacena la información comercial de cada vehículo:
+- **Clave**: Código único del vehículo (debe coincidir con "vehiculos")
+- **Valor**: Lista con 2 elementos [precio, stock]
+
+| Índice | Campo | Descripción | Ejemplo |
+|--------|-------|-------------|---------|
+| 0 | Precio | Precio de venta en pesos chilenos | 8500000, 12750000 |
+| 1 | Stock | Cantidad disponible (0 = no disponible) | 1, 2, 0 |
+
+**Ejemplo del diccionario inventario:**
+```python
+inventario = {
+    'TOY8475': [8500000, 1], 
+    'FOR2175': [6200000, 1], 
+    'CHE9834': [12750000, 1],
+    'NIS7654': [5400000, 2], 
+    'HYU4521': [15200000, 1], 
+    'KIA3456': [7800000, 1],
+    'MAZ8901': [9200000, 1], 
+    'SUB2468': [11500000, 0], 
+    'HON1357': [6800000, 0],
+    # ... más vehículos
+}
 ```
 
-### Comandos de información
-```bash
-git log                    # Ver historial
-git log --oneline          # Ver historial resumido
-git diff                   # Ver cambios no staged
-git diff --cached          # Ver cambios staged
-git show                   # Ver último commit
+---
+
+## Requerimientos del Sistema
+
+### Menú Principal
+El programa debe mostrar un menú interactivo con las siguientes opciones:
+
+```
+*** MENU CONCESIONARIO AUTOUSADOS ***
+1. Consultar inventario por marca.
+2. Búsqueda por rango de precios.
+3. Modificar precio de vehículo.
+4. Salir del sistema.
 ```
 
-### Comandos de remoto
-```bash
-git remote -v              # Ver repositorios remotos
-git remote add origin <url> # Agregar repositorio remoto
-git push -u origin main    # Subir y configurar upstream
-git fetch                  # Bajar cambios sin merge
-git pull origin main       # Bajar y fusionar cambios
+### Funcionalidades Requeridas
+
+#### 1. Consultar inventario por marca
+- **Función**: `inventario_marca(marca)`
+- **Parámetros**: 
+  - `marca` (string): Nombre de la marca a consultar
+- **Retorno**: No retorna valor (void)
+- **Funcionalidad**:
+  - Recibe una marca ingresada por el usuario
+  - La búsqueda debe ser **insensible a mayúsculas/minúsculas**
+  - Suma el stock total de todos los vehículos de esa marca
+  - Muestra el resultado en pantalla
+- **Validaciones**:
+  - Si la marca no existe, mostrar stock 0
+  - Considerar solo vehículos con stock > 0
+
+**Formato de salida:**
+```
+El inventario de [MARCA] es: [TOTAL_STOCK]
 ```
 
-### Comandos de emergencia
-```bash
-git reset --hard HEAD      # Descartar todos los cambios
-git checkout -- <archivo>  # Descartar cambios de archivo
-git reset HEAD <archivo>   # Quitar archivo del staging
-git revert <commit>        # Revertir commit específico
+#### 2. Búsqueda por rango de precios
+- **Función**: `busqueda_precio(precio_min, precio_max)`
+- **Parámetros**: 
+  - `precio_min` (int): Precio mínimo del rango
+  - `precio_max` (int): Precio máximo del rango
+- **Retorno**: No retorna valor (void)
+- **Funcionalidad**:
+  - Busca todos los vehículos dentro del rango de precios especificado
+  - Considera solo vehículos con stock > 0
+  - Genera una lista de strings con formato "Marca--Código"
+  - Ordena la lista alfabéticamente
+  - Muestra la lista completa en pantalla
+
+- **Validaciones obligatorias**:
+  - Los precios deben ser números enteros
+  - Si el usuario ingresa datos no numéricos, mostrar: "Debe ingresar valores enteros!!" y volver a preguntar
+  - Usar manejo de excepciones (try-except)
+  - Si no hay vehículos en el rango, mostrar: "No hay vehículos en ese rango de precios."
+  - El precio mínimo debe ser menor o igual al precio máximo
+
+**Formato de salida exitosa:**
 ```
+Los vehículos en el rango de precios consultado son: ['Chevrolet--CHE9834', 'Ford--FOR2175', 'Toyota--TOY8475']
+```
+
+#### 3. Modificar precio de vehículo
+- **Función**: `actualizar_precio(codigo, precio_nuevo)`
+- **Parámetros**: 
+  - `codigo` (string): Código del vehículo a actualizar
+  - `precio_nuevo` (int): Nuevo precio del vehículo
+- **Retorno**: 
+  - `True`: Si la actualización fue exitosa
+  - `False`: Si el código no existe
+- **Funcionalidad**:
+  - Actualiza el precio de un vehículo específico en el diccionario "inventario"
+  - El programa principal debe manejar los mensajes según el valor retornado
+
+- **Validaciones**:
+  - Verificar que el código existe en el diccionario
+  - El precio nuevo debe ser un número entero positivo
+
+- **Flujo en el programa principal**:
+  1. Solicitar código del vehículo
+  2. Solicitar nuevo precio
+  3. Llamar a la función `actualizar_precio()`
+  4. Según el retorno:
+     - `True`: Mostrar "Precio actualizado exitosamente!!"
+     - `False`: Mostrar "El código del vehículo no existe!!"
+  5. Preguntar: "¿Desea actualizar otro precio (s/n)?"
+     - Si responde "s": Repetir el proceso
+     - Si responde "n": Volver al menú principal
+
+#### 4. Salir del sistema
+- Mostrar mensaje: "Sistema finalizado correctamente."
+- Terminar la ejecución del programa
+
+### Validaciones Generales del Menú
+
+- Si el usuario ingresa una opción inválida en el menú principal:
+  - Mostrar: "Debe seleccionar una opción válida!!"
+  - Volver a mostrar el menú
+
+---
+
+## Ejemplo de Ejecución Completa
+
+```
+*** MENU CONCESIONARIO AUTOUSADOS ***
+1. Consultar inventario por marca.
+2. Búsqueda por rango de precios.
+3. Modificar precio de vehículo.
+4. Salir del sistema.
+Ingrese opción: 1
+
+Ingrese marca a consultar: Toyota
+El inventario de Toyota es: 1
+
+*** MENU CONCESIONARIO AUTOUSADOS ***
+1. Consultar inventario por marca.
+2. Búsqueda por rango de precios.
+3. Modificar precio de vehículo.
+4. Salir del sistema.
+Ingrese opción: 1
+
+Ingrese marca a consultar: bmw
+El inventario de BMW es: 0
+
+*** MENU CONCESIONARIO AUTOUSADOS ***
+1. Consultar inventario por marca.
+2. Búsqueda por rango de precios.
+3. Modificar precio de vehículo.
+4. Salir del sistema.
+Ingrese opción: 2
+
+Ingrese precio mínimo: 6000000
+Ingrese precio máximo: 9000000
+Los vehículos en el rango de precios consultado son: ['Ford--FOR2175', 'Kia--KIA3456', 'Toyota--TOY8475']
+
+*** MENU CONCESIONARIO AUTOUSADOS ***
+1. Consultar inventario por marca.
+2. Búsqueda por rango de precios.
+3. Modificar precio de vehículo.
+4. Salir del sistema.
+Ingrese opción: 2
+
+Ingrese precio mínimo: hola
+Debe ingresar valores enteros!!
+Ingrese precio mínimo: 20000000
+Ingrese precio máximo: 25000000
+No hay vehículos en ese rango de precios.
+
+*** MENU CONCESIONARIO AUTOUSADOS ***
+1. Consultar inventario por marca.
+2. Búsqueda por rango de precios.
+3. Modificar precio de vehículo.
+4. Salir del sistema.
+Ingrese opción: 3
+
+Ingrese código del vehículo a actualizar: TOY8475
+Ingrese precio nuevo: 9200000
+Precio actualizado exitosamente!!
+¿Desea actualizar otro precio (s/n)?: s
+
+Ingrese código del vehículo a actualizar: BMW123
+Ingrese precio nuevo: 15000000
+El código del vehículo no existe!!
+¿Desea actualizar otro precio (s/n)?: n
+
+*** MENU CONCESIONARIO AUTOUSADOS ***
+1. Consultar inventario por marca.
+2. Búsqueda por rango de precios.
+3. Modificar precio de vehículo.
+4. Salir del sistema.
+Ingrese opción: 8
+
+Debe seleccionar una opción válida!!
+
+*** MENU CONCESIONARIO AUTOUSADOS ***
+1. Consultar inventario por marca.
+2. Búsqueda por rango de precios.
+3. Modificar precio de vehículo.
+4. Salir del sistema.
+Ingrese opción: 4
+
+Sistema finalizado correctamente.
+```
+
+---
+
+## Notas Importantes para la Implementación
+
+### Manejo de Excepciones
+- Implementar try-except para la validación de entrada de números enteros
+- Capturar `ValueError` cuando el usuario ingrese texto en lugar de números
+
+### Estructura del Código
+- El programa debe estar estructurado con funciones claramente definidas
+- Cada función debe cumplir con su responsabilidad específica
+- El código principal (main) debe manejar el flujo del menú y las interacciones con el usuario
+
+### Consideraciones Técnicas
+- Los datos de entrada del usuario aparecen en **negrita** en los ejemplos
+- Todas las comparaciones de strings deben ser insensibles a mayúsculas/minúsculas
+- El ordenamiento debe ser alfabético ascendente
+- Los diccionarios pueden contener más datos de los mostrados en los ejemplos (indicado por "...")
+
+### Criterios de Evaluación
+- Correcta implementación de las funciones requeridas
+- Manejo adecuado de excepciones y validaciones
+- Funcionalidad completa del menú interactivo
+- Formato correcto de salida según los ejemplos proporcionados
+- Eficiencia y claridad del código
