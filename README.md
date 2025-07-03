@@ -1,17 +1,4 @@
-# Evaluación Final Transversal
-## Ejecución Práctica
-
-### Información General
-
-| Campo | Detalle |
-|-------|---------|
-| **Sigla** | FPY1101 |
-| **Asignatura** | Fundamentos de programación |
-| **Tiempo Asignado** | 7 horas |
-| **Ponderación** | 40% |
-| **Tipo de Evaluación** | Ejecución práctica |
-
----
+# Simulación Evaluación Final Transversal
 
 ## Contexto del Problema
 
