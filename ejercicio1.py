@@ -27,10 +27,12 @@ inventario = {
 
 def inventario_marca(marca):
     total_stock = 0
+    marca_buscada = marca.lower() # Convertimos a minúsculas para comparar
 # Recorremos cada vehículo en el diccionario vehiculos
     for codigo, datos in vehiculos.items():
+        marca_vehiculo = datos[0].lower() # También convertimos la marca del vehículo
 # datos[0] es la marca del vehículo
-        if datos[0] == marca:
+        if marca_vehiculo == marca_buscada:
 # Verificamos si este código existe en inventario
             if codigo in inventario:
 # inventario[codigo][1] es el stock
