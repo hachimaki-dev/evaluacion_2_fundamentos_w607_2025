@@ -34,29 +34,56 @@ def inventario_marca(marca):
     total_stock = 0
     
     for codigo, datos_vehiculo in vehiculos.items():
-        if datos_vehiculo[0] == marca:
+        if datos_vehiculo[0].lower() == marca.lower():
             if codigo in inventario:
                 total_stock += inventario[codigo][1]
     
     return total_stock
 
 
-print("=== CONSULTA DE INVENTARIO POR MARCA ===")
-marca_usuario = input("Ingrese la marca que desea consultar: ")
-
-
-cantidad = inventario_marca(marca_usuario)
-
-
-if cantidad > 0:
-    print(f"Inventario disponible de {marca_usuario}: {cantidad}")
-else:
-    print(f"No hay inventario disponible de la marca '{marca_usuario}'")
-
 def busqueda_precio(precio_min, precio_max):
+    autos_validos = 0
+    for codigo, datos in inventario.items():
+        precio_vehiculo= datos[0]
+        stock_autos = datos[1]
+        if precio_min <= precio_vehiculo <= precio_max:
+            print(codigo, "esta en el rango")
+
+
     return
+
+
+
+
+
+
+
 
 def actualizar_precio(codigo, precio_nuevo):
+    for codigo_V, valor in inventario.items():
+        if codigo_V == codigo:
+            if codigo_V in inventario:
+                valor[0] == precio_nuevo
+                print (inventario)
     return
 
-inventario_marca("Toyota")
+
+
+actualizar_precio("FOR2175", 200)
+
+def menu(): 
+
+    print("=== CONSULTA DE INVENTARIO POR MARCA ===")
+    marca_usuario = input("Ingrese la marca que desea consultar: ")
+
+
+    cantidad = inventario_marca(marca_usuario)
+
+
+    if cantidad > 0:
+        print(f"Inventario disponible de {marca_usuario}: {cantidad}")
+    else:
+        print(f"No hay inventario disponible de la marca '{marca_usuario}'")
+
+
+    inventario_marca("Toyota")
