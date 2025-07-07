@@ -41,7 +41,22 @@ def rango_precio(precio_minimo,precio_maximo):
     for codigo,datos in inventario.items():
         precio_vehiculo = datos[0]
         stock = datos[1]
-        if precio_minimo <=precio_vehiculo <= precio_maximo:
-            print(codigo,"esta dentro del rango")
+        if codigo in vehiculos:
+            nombre_vehiculo = vehiculos[codigo][0]
+            if precio_minimo <=precio_vehiculo <= precio_maximo and stock > 0:
+                datos_vechiculo_valido =  nombre_vehiculo + "--" + codigo
+                vehiculos_validos.append(datos_vechiculo_valido)
+                print(vehiculos_validos)
+
+
+def modificar_valor_vechivulo(codigo_vechiculo, nuevo_precio_vechiculo):
+    for codigo, valor in inventario.items():
+        if codigo == codigo_vechiculo:
+            valor[0] = nuevo_precio_vechiculo
+            return True
+     
+
 inventario_marca("hyundai")
 rango_precio(8000000,200000000)
+modificar_valor_vechivulo("HON1357", 7000000)
+print("Diccionario modificado " , inventario)
